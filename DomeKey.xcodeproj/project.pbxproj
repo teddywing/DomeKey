@@ -8,10 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		D110C9482122E2D80094F963 /* HeadphoneKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D110C9472122E2D80094F963 /* HeadphoneKey.m */; };
+		D110C94A2122F1ED0094F963 /* libddhid.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D160C32221197983007D1B50 /* libddhid.a */; };
 		D160C2A12118EF9D007D1B50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D160C2A02118EF9D007D1B50 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D1113DEE2123697300FF6E39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D160C31521197983007D1B50 /* DDHidLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 559CBBCB0B5B336600C8FD74;
+			remoteInfo = ddhid;
+		};
 		D160C31D21197983007D1B50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D160C31521197983007D1B50 /* DDHidLib.xcodeproj */;
@@ -40,20 +48,13 @@
 			remoteGlobalIDString = 55193E500B93F2EE004C0C98;
 			remoteInfo = DDHidLib;
 		};
-		D160C32521197994007D1B50 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D160C31521197983007D1B50 /* DDHidLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 55193E4F0B93F2EE004C0C98;
-			remoteInfo = DDHidLib;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D160C29B2118EF9D007D1B50 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
 			);
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D110C94A2122F1ED0094F963 /* libddhid.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +142,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D160C32621197994007D1B50 /* PBXTargetDependency */,
+				D1113DEF2123697300FF6E39 /* PBXTargetDependency */,
 			);
 			name = DomeKey;
 			productName = DomeKey;
@@ -229,10 +231,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D160C32621197994007D1B50 /* PBXTargetDependency */ = {
+		D1113DEF2123697300FF6E39 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = DDHidLib;
-			targetProxy = D160C32521197994007D1B50 /* PBXContainerItemProxy */;
+			name = ddhid;
+			targetProxy = D1113DEE2123697300FF6E39 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -344,7 +346,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -352,7 +356,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

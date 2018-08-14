@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <DDHidLib/DDHidAppleMikey.h>
 
 @interface HeadphoneKey : NSObject
 

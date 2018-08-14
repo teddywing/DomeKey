@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D110C9482122E2D80094F963 /* HeadphoneKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D110C9472122E2D80094F963 /* HeadphoneKey.m */; };
 		D160C2A12118EF9D007D1B50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D160C2A02118EF9D007D1B50 /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D110C9462122E2D80094F963 /* HeadphoneKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadphoneKey.h; sourceTree = "<group>"; };
+		D110C9472122E2D80094F963 /* HeadphoneKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadphoneKey.m; sourceTree = "<group>"; };
 		D160C29D2118EF9D007D1B50 /* DomeKey */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DomeKey; sourceTree = BUILT_PRODUCTS_DIR; };
 		D160C2A02118EF9D007D1B50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D160C31521197983007D1B50 /* DDHidLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DDHidLib.xcodeproj; path = lib/DDHidLib/DDHidLib.xcodeproj; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 		D160C29F2118EF9D007D1B50 /* DomeKey */ = {
 			isa = PBXGroup;
 			children = (
+				D110C9462122E2D80094F963 /* HeadphoneKey.h */,
+				D110C9472122E2D80094F963 /* HeadphoneKey.m */,
 				D160C2A02118EF9D007D1B50 /* main.m */,
 			);
 			path = DomeKey;
@@ -216,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D110C9482122E2D80094F963 /* HeadphoneKey.m in Sources */,
 				D160C2A12118EF9D007D1B50 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

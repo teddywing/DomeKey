@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HeadphoneKey.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         NSLog(@"Hello, World!");
+
+        HeadphoneKey *h = [[HeadphoneKey alloc] init];
+        while (YES) {
+        }
     }
     return 0;
 }

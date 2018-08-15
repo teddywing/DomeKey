@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <DDHidLib/DDHidAppleMikey.h>
 
-@interface HeadphoneKey : NSObject
+@interface HeadphoneKey : NSObject {
+    NSArray *_mikeys;
+}
 
 @end

@@ -28,10 +28,19 @@
                   press:(unsigned)usageId
                upOrDown:(BOOL)upOrDown
 {
-    NSLog(@"Clicked");
-    NSLog(@"%d", usageId);
-    NSLog(@"%@", mikey);
-    NSLog(@"%d", upOrDown);
+    if (upOrDown == KeyPressUp) {
+        switch (usageId) {
+        case kHIDUsage_Csmr_PlayOrPause:
+            NSLog(@"Middle");
+            break;
+        case kHIDUsage_Csmr_VolumeIncrement:
+            NSLog(@"Top");
+            break;
+        case kHIDUsage_Csmr_VolumeDecrement:
+            NSLog(@"Bottom");
+            break;
+        }
+    }
 }
 
 @end

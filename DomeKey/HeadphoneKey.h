@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <DDHidLib/DDHidAppleMikey.h>
 
+typedef enum KeyPress : BOOL {
+    KeyPressDown = YES,
+    KeyPressUp = NO
+} KeyPress;
+
 @interface HeadphoneKey : NSObject {
     NSArray *_mikeys;
 }

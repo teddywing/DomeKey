@@ -7,16 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HeadphoneKey.h"
+#import "AppDelegate.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        [NSApplication sharedApplication];
+        AppDelegate *app = [[AppDelegate alloc] init];
+        [NSApp setDelegate:app];
+
         // insert code here...
         NSLog(@"Hello, World!");
 
-        HeadphoneKey *h = [[HeadphoneKey alloc] init];
-        while (YES) {
-        }
+        [NSApp run];
     }
     return 0;
 }

@@ -54,16 +54,16 @@
     [_key_buffer addObject:storable_button];
 
     [NSObject cancelPreviousPerformRequestsWithTarget:self
-        selector:@selector(maybeRunAction)
+        selector:@selector(runAction)
         object:nil];
 
     NSTimeInterval timeout_seconds = TIMEOUT_MILLISECONDS / 1000.0;
-    [self performSelector:@selector(maybeRunAction)
+    [self performSelector:@selector(runAction)
         withObject:nil
         afterDelay:timeout_seconds];
 }
 
-- (void)maybeRunAction
+- (void)runAction
 {
     NSLog(@"%@", _key_buffer);
 

@@ -14,6 +14,8 @@
 {
     self = [super init];
     if (self) {
+        _key_buffer = [[NSMutableArray alloc] initWithCapacity:5];
+
         _mikeys = [DDHidAppleMikey allMikeys];
         [_mikeys makeObjectsPerformSelector:@selector(setDelegate:)
             withObject:self];
@@ -32,15 +34,40 @@
         switch (usageId) {
         case kHIDUsage_Csmr_PlayOrPause:
             NSLog(@"Middle");
+            [self handleDeadKey:HeadphoneButton_Play];
             break;
         case kHIDUsage_Csmr_VolumeIncrement:
             NSLog(@"Top");
+            [self handleDeadKey:HeadphoneButton_Up];
             break;
         case kHIDUsage_Csmr_VolumeDecrement:
             NSLog(@"Bottom");
+            [self handleDeadKey:HeadphoneButton_Down];
             break;
         }
     }
+}
+
+- (void)handleDeadKey:(HeadphoneButton)button
+{
+    NSNumber *storable_button = [NSNumber numberWithUnsignedInteger:button];
+    [_key_buffer addObject:storable_button];
+
+    [NSObject cancelPreviousPerformRequestsWithTarget:self
+        selector:@selector(maybeRunAction)
+        object:nil];
+
+    NSTimeInterval timeout_seconds = TIMEOUT_MILLISECONDS / 1000.0;
+    [self performSelector:@selector(maybeRunAction)
+        withObject:nil
+        afterDelay:timeout_seconds];
+}
+
+- (void)maybeRunAction
+{
+    NSLog(@"%@", _key_buffer);
+
+    [_key_buffer removeAllObjects];
 }
 
 @end

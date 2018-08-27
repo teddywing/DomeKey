@@ -1,3 +1,5 @@
+#import <Carbon/Carbon.h>
+
 // Théo Winterhalter
 // https://stackoverflow.com/users/1275975/th%c3%a9o-winterhalter
 // https://stackoverflow.com/questions/1918841/how-to-convert-ascii-character-to-cgkeycode/33584460#33584460

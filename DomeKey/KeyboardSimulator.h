@@ -10,4 +10,7 @@
 
 @interface KeyboardSimulator : NSObject
 
++ (CGKeyCode)keyCodeForChar:(NSString *)aChar;
++ (void)simpleKeyPressWithKey:(NSString *)aChar;
+
 @end

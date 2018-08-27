@@ -53,7 +53,7 @@ NSNumber* charToKeyCode(const char c)
     dict = [NSMutableDictionary dictionary];
 
     // For every keyCode
-    size_t i;
+    int i;
     for (i = 0; i < 128; ++i)
     {
       NSString* str = keyCodeToString((CGKeyCode)i);

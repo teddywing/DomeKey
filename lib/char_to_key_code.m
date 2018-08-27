@@ -1,4 +1,4 @@
-#import <Carbon/Carbon.h>
+#import "char_to_key_code.h"
 
 // Théo Winterhalter
 // https://stackoverflow.com/users/1275975/th%c3%a9o-winterhalter

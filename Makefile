@@ -5,5 +5,6 @@ SOURCE_FILES = $(shell find DomeKey lib \
 	-or -name '*.c')
 
 
+.PHONY: build
 build: $(SOURCE_FILES)
 	xcodebuild -scheme DomeKey -configuration Debug

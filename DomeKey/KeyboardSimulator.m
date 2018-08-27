@@ -10,18 +10,17 @@
 
 @implementation KeyboardSimulator
 
-+ (CGKeyCode)keyCodeForChar:(NSString *)aChar
-{
-    return (CGKeyCode)0;
-}
-
-+ (void)simpleKeyPressWithKey:(NSString *)aChar
++ (void)simpleKeyPressWithKey:(const char)aChar
 {
     CGEventSourceRef source = CGEventSourceCreate(
         kCGEventSourceStateHIDSystemState
     );
 
-    CGKeyCode key_code = [self keyCodeForChar:aChar];
+    NSNumber *key_number = charToKeyCode(aChar);
+    if (key_number == nil) {
+        return;
+    }
+    CGKeyCode key_code = (CGKeyCode)[key_number intValue];
 
     CGEventRef key_down = CGEventCreateKeyboardEvent(source, key_code, true);
     CGEventRef key_up = CGEventCreateKeyboardEvent(source, key_code, false);

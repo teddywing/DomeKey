@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "char_to_key_code.h"
 
 @interface KeyboardSimulator : NSObject
 
-+ (CGKeyCode)keyCodeForChar:(NSString *)aChar;
-+ (void)simpleKeyPressWithKey:(NSString *)aChar;
++ (void)simpleKeyPressWithKey:(const char)aChar;
 
 @end

@@ -9,7 +9,7 @@ RUST_LIB := target/debug/libdome_key_map.a
 
 
 .PHONY: build
-build: $(SOURCE_FILES)
+build: $(SOURCE_FILES) $(RUST_LIB)
 	xcodebuild -scheme DomeKey -configuration Debug
 
 $(RUST_LIB):

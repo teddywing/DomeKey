@@ -9,16 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <DDHidLib/DDHidAppleMikey.h>
 
+#import "dome_key_map.h"
+
 typedef enum KeyPress : BOOL {
     KeyPressDown = YES,
     KeyPressUp = NO
 } KeyPress;
-
-typedef enum HeadphoneButton : NSUInteger {
-    HeadphoneButton_Play,
-    HeadphoneButton_Up,
-    HeadphoneButton_Down
-} HeadphoneButton;
 
 static const unsigned int TIMEOUT_MILLISECONDS = 1000;
 

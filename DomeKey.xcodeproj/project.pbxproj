@@ -79,6 +79,7 @@
 		D1E1020721345E2200B2CA29 /* char_to_key_code.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = char_to_key_code.m; path = lib/char_to_key_code.m; sourceTree = SOURCE_ROOT; };
 		D1E102092134611800B2CA29 /* char_to_key_code.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = char_to_key_code.h; path = lib/char_to_key_code.h; sourceTree = SOURCE_ROOT; };
 		D1E1020A21350BAD00B2CA29 /* libdome_key_map.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdome_key_map.a; path = "lib/dome-key-map/target/debug/libdome_key_map.a"; sourceTree = "<group>"; };
+		D1E1020C21350D4100B2CA29 /* dome_key_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dome_key_map.h; path = "lib/dome-key-map/dome_key_map.h"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +152,7 @@
 			children = (
 				D1E102092134611800B2CA29 /* char_to_key_code.h */,
 				D1E1020721345E2200B2CA29 /* char_to_key_code.m */,
+				D1E1020C21350D4100B2CA29 /* dome_key_map.h */,
 			);
 			name = lib;
 			path = DomeKey/lib;

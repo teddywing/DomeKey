@@ -67,6 +67,21 @@
 {
     NSLog(@"%@", _key_buffer);
 
+    NSUInteger count = [_key_buffer count];
+    HeadphoneButton trigger[count];
+
+    for (int i = 0; i < count; i++) {
+        trigger[i] = (HeadphoneButton)[[_key_buffer objectAtIndex:i] intValue];
+    }
+
+    const CKeyActionResult *result = c_run_key_action(trigger, count);
+
+    if (*result->kind == MapKind_Map) {
+        for (int i = 0; i < strlen(result->action); i++) {
+            [KeyboardSimulator simpleKeyPressWithKey:result->action[i]];
+        }
+    }
+
     [_key_buffer removeAllObjects];
 }
 

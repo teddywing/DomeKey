@@ -10,6 +10,7 @@
 #import <DDHidLib/DDHidAppleMikey.h>
 
 #import "dome_key_map.h"
+#import "KeyboardSimulator.h"
 
 typedef enum KeyPress : BOOL {
     KeyPressDown = YES,

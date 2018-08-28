@@ -18,6 +18,7 @@
 
     NSNumber *key_number = charToKeyCode(aChar);
     if (key_number == nil) {
+        NSLog(@"charToKeyCode returned nil");
         return;
     }
     CGKeyCode key_code = (CGKeyCode)[key_number intValue];

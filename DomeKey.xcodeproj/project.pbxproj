@@ -13,6 +13,7 @@
 		D160C2A12118EF9D007D1B50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D160C2A02118EF9D007D1B50 /* main.m */; };
 		D1E101FE2133FA0300B2CA29 /* KeyboardSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E101FD2133FA0300B2CA29 /* KeyboardSimulator.m */; };
 		D1E1020821345E2300B2CA29 /* char_to_key_code.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E1020721345E2200B2CA29 /* char_to_key_code.m */; };
+		D1E1020B21350BAD00B2CA29 /* libdome_key_map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E1020A21350BAD00B2CA29 /* libdome_key_map.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		D1E101FD2133FA0300B2CA29 /* KeyboardSimulator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardSimulator.m; sourceTree = "<group>"; };
 		D1E1020721345E2200B2CA29 /* char_to_key_code.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = char_to_key_code.m; path = lib/char_to_key_code.m; sourceTree = SOURCE_ROOT; };
 		D1E102092134611800B2CA29 /* char_to_key_code.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = char_to_key_code.h; path = lib/char_to_key_code.h; sourceTree = SOURCE_ROOT; };
+		D1E1020A21350BAD00B2CA29 /* libdome_key_map.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdome_key_map.a; path = "lib/dome-key-map/target/debug/libdome_key_map.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D110C94A2122F1ED0094F963 /* libddhid.a in Frameworks */,
+				D1E1020B21350BAD00B2CA29 /* libdome_key_map.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				D160C31521197983007D1B50 /* DDHidLib.xcodeproj */,
+				D1E1020A21350BAD00B2CA29 /* libdome_key_map.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -373,6 +377,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/dome-key-map/target/debug",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -383,6 +391,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib/dome-key-map/target/debug",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

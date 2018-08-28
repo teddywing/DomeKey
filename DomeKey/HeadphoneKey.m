@@ -77,9 +77,12 @@
     const CKeyActionResult *result = c_run_key_action(trigger, count);
 
     if (*result->kind == MapKind_Map) {
-        size_t length = strlen(result->action);
-        for (size_t i = 0; i < length; i++) {
+        const char *c = result->action;
+        int i = 0;
+        while (*c) {
             [KeyboardSimulator simpleKeyPressWithKey:result->action[i]];
+            i++;
+            *c++;
         }
     }
 

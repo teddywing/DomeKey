@@ -68,13 +68,18 @@
     NSLog(@"%@", _key_buffer);
 
     NSUInteger count = [_key_buffer count];
-    HeadphoneButton trigger[count];
+    HeadphoneButton buttons[count];
 
     for (int i = 0; i < count; i++) {
-        trigger[i] = (HeadphoneButton)[[_key_buffer objectAtIndex:i] intValue];
+        buttons[i] = (HeadphoneButton)[[_key_buffer objectAtIndex:i] intValue];
     }
 
-    const CKeyActionResult *result = c_run_key_action(trigger, count);
+    Trigger trigger = {
+        .buttons = buttons,
+        .length = count
+    };
+
+    const CKeyActionResult *result = c_run_key_action(trigger, NULL);
 
     if (*result->kind == MapKind_Map) {
         const char *c = result->action;

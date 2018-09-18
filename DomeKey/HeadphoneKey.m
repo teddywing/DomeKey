@@ -81,7 +81,8 @@
 
     const CKeyActionResult *result = c_run_key_action(trigger, NULL);
 
-    if (*result->kind == MapKind_Map) {
+    if (result->kind &&
+            *result->kind == ActionKind_Map) {
         const char *c = result->action;
         int i = 0;
         while (*c) {

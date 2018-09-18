@@ -95,4 +95,17 @@
     [_key_buffer removeAllObjects];
 }
 
+- (const Trigger *)maybeSwitchToMode:(const CKeyActionResult *)result
+{
+    // if _in_mode is not null, nullify it
+    // TODO: rename this method
+
+    if (result->kind &&
+            *result->kind == ActionKind_Mode) {
+        _in_mode = result->in_mode;
+    }
+
+    return _in_mode;
+}
+
 @end

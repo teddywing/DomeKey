@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         _key_buffer = [[NSMutableArray alloc] initWithCapacity:5];
+        _in_mode = NULL;
 
         _mikeys = [DDHidAppleMikey allMikeys];
         [_mikeys makeObjectsPerformSelector:@selector(setDelegate:)
@@ -79,19 +80,31 @@
         .length = count
     };
 
-    const CKeyActionResult *result = c_run_key_action(trigger, NULL);
+    const CKeyActionResult *result = c_run_key_action(trigger, _in_mode);
 
-    if (result->kind &&
-            *result->kind == ActionKind_Map) {
-        const char *c = result->action;
-        int i = 0;
-        while (*c) {
-            [KeyboardSimulator simpleKeyPressWithKey:result->action[i]];
-            i++;
-            *c++;
+//    if ([self maybeSwitchToMode:result]) {
+//        goto cleanup;
+//    }
+
+    if (result->kind) {
+        if (*result->kind == ActionKind_Map) {
+            const char *c = result->action;
+            int i = 0;
+            while (*c) {
+                [KeyboardSimulator simpleKeyPressWithKey:result->action[i]];
+                i++;
+                *c++;
+            }
+        }
+        else if (*result->kind == ActionKind_Mode) {
+//            [self maybeSwitchToMode:result];
+            _in_mode = malloc(sizeof(Trigger))
+            *_in_mode = *result->in_mode;
+//            memcpy(_in_mode, result->in_mode, sizeof(const Trigger));
         }
     }
 
+cleanup:
     [_key_buffer removeAllObjects];
 }
 

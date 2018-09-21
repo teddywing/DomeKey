@@ -22,7 +22,8 @@ static const unsigned int TIMEOUT_MILLISECONDS = 1000;
 @interface HeadphoneKey : NSObject {
     NSArray *_mikeys;
     NSMutableArray *_key_buffer;
-    const Trigger *_in_mode;
+//    const Trigger *_in_mode;
+    Trigger *_in_mode;
 }
 
 - (void)handleDeadKey:(HeadphoneButton)button;

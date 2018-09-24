@@ -14,3 +14,7 @@ build: $(SOURCE_FILES) $(RUST_LIB)
 
 $(RUST_LIB):
 	$(MAKE) -C $(RUST_DIR) $@
+
+.PHONY: run
+run: build
+	~/Library/Developer/Xcode/DerivedData/DomeKey-*/Build/Products/Debug/DomeKey

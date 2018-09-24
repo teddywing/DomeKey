@@ -24,6 +24,7 @@ static const unsigned int TIMEOUT_MILLISECONDS = 1000;
     NSMutableArray *_key_buffer;
 //    const Trigger *_in_mode;
     Trigger *_in_mode;
+    State *_state;
 }
 
 - (void)handleDeadKey:(HeadphoneButton)button;

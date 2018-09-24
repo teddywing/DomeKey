@@ -1,4 +1,4 @@
-SOURCE_FILES = $(shell find DomeKey lib \
+SOURCE_FILES := $(shell find DomeKey lib \
 	-type f \
 	-name '*.h' \
 	-or -name '*.m' \
@@ -7,9 +7,13 @@ SOURCE_FILES = $(shell find DomeKey lib \
 RUST_DIR := lib/dome-key-map
 RUST_LIB := target/debug/libdome_key_map.a
 
+DEBUG_PRODUCT := ~/Library/Developer/Xcode/DerivedData/DomeKey-*/Build/Products/Debug/DomeKey
+
 
 .PHONY: build
-build: $(SOURCE_FILES) $(RUST_LIB)
+build: $(DEBUG_PRODUCT)
+
+$(DEBUG_PRODUCT): $(SOURCE_FILES) | $(RUST_LIB)
 	xcodebuild -scheme DomeKey -configuration Debug
 
 $(RUST_LIB):
@@ -17,4 +21,4 @@ $(RUST_LIB):
 
 .PHONY: run
 run: build
-	~/Library/Developer/Xcode/DerivedData/DomeKey-*/Build/Products/Debug/DomeKey
+	$(DEBUG_PRODUCT)

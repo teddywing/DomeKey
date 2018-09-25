@@ -17,6 +17,8 @@
         _key_buffer = [[NSMutableArray alloc] initWithCapacity:5];
         _in_mode = NULL;
         _state = state_new();
+        logger_init();
+        state_load_map_group(_state);
 
         _mikeys = [DDHidAppleMikey allMikeys];
         [_mikeys makeObjectsPerformSelector:@selector(setDelegate:)

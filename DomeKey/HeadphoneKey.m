@@ -83,29 +83,6 @@
 
     const CKeyActionResult *result = c_run_key_action(_state, trigger, _in_mode);
 
-//    if ([self maybeSwitchToMode:result]) {
-//        goto cleanup;
-//    }
-
-    if (result->kind) {
-        if (*result->kind == ActionKind_Map) {
-            const char *c = result->action;
-            int i = 0;
-            while (*c) {
-                [KeyboardSimulator simpleKeyPressWithKey:result->action[i]];
-                i++;
-                *c++;
-            }
-        }
-        else if (*result->kind == ActionKind_Mode) {
-//            [self maybeSwitchToMode:result];
-            // _in_mode = malloc(sizeof(Trigger))
-            // *_in_mode = *result->in_mode;
-//            memcpy(_in_mode, result->in_mode, sizeof(const Trigger));
-        }
-    }
-
-cleanup:
     [_key_buffer removeAllObjects];
 }
 

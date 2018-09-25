@@ -8,6 +8,12 @@ v Add `MapGroup` to `State` (2018.09.25)
 - Key simulation for special keys
 	- F1 etc.
 	- Modifier keys
+	- Escaping
+		:help <>
+		1.  Any printable characters are typed directly, except backslash and '<'
+		2.  A backslash is represented with "\\", double backslash, or "<Bslash>".
+		3.  A real '<' is represented with "\<" or "<lt>".  When there is no
+			confusion possible, a '<' can be used directly.
 - Fix: when in mode, non-mode mappings should not be enabled
 - Command handling
 - DKMap Parser

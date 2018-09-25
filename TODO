@@ -2,8 +2,8 @@ TODO
 ====
 
 2018.09.24:
-- Add `MapGroup` to `State`
-	- FFI function to load `MapGroup` into `State`
+v Add `MapGroup` to `State` (2018.09.25)
+	v FFI function to load `MapGroup` into `State` (2018.09.25)
 - Dealloc `_state`
 - Key simulation for special keys
 	- F1 etc.
@@ -37,10 +37,10 @@ TODO
 	- Log file? (Thinking always stdout)
 - LaunchAgent
 - Load mappings from file
-- Logging
-	- Always output consistent timestamp
-	- Log errors
-	- Remove `unwrap`s
+/ Logging
+	/ Always output consistent timestamp
+	/ Log errors
+	/ Remove `unwrap`s
 	- Check error messages of parser
 - Other headphones
 	- Test with single-button headphones (<prev>/<next>)

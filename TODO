@@ -9,6 +9,7 @@ TODO
 	- F1 etc.
 	- Modifier keys
 - Fix: when in mode, non-mode mappings should not be enabled
+- Command handling
 - DKMap Parser
 	- Fail if no newline at the end of the file
 - Cleanup

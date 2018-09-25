@@ -1,0 +1,58 @@
+TODO
+====
+
+2018.09.24:
+- Add `MapGroup` to `State`
+	- FFI function to load `MapGroup` into `State`
+- Dealloc `_state`
+- Key simulation for special keys
+	- F1 etc.
+	- Modifier keys
+- Fix: when in mode, non-mode mappings should not be enabled
+- DKMap Parser
+	- Fail if no newline at the end of the file
+- Cleanup
+	- Remove result from `run_key_action_for_mode()`
+	- Remove Objective-C key press simulation
+	- C header file
+	- cocoa_bridge
+		- Rename to `ffi` module
+		- Get rid of unused structs
+		- Get rid of debug print statements
+- Documentation
+	- README
+	- Code docs
+- Command-line argument handling
+	- Custom config file
+	- DKMap file
+	- Register license
+	- Daemon
+	- Reload DKMap file (XPC services, communicate with running daemon to reload
+	  its mappings)
+	- Write LaunchAgent plist file
+- Config file
+	- Read from a config file (XDG etc.)
+	- Timeout
+	- Log file? (Thinking always stdout)
+- LaunchAgent
+- Load mappings from file
+- Logging
+	- Always output consistent timestamp
+	- Log errors
+	- Remove `unwrap`s
+	- Check error messages of parser
+- Other headphones
+	- Test with single-button headphones (<prev>/<next>)
+	- Test with Bluetooth headphones
+- Licensing
+	- Add Aquatic Prime or some such
+	- 30-day trial
+- Audio
+	- Mode activated
+	- Mode deactivated
+- DKMap editor plugins
+	- Vim
+	- Emacs
+- Homebrew formula
+- Website
+- Demo video

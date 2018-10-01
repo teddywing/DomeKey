@@ -14,6 +14,7 @@ v Add `MapGroup` to `State` (2018.09.25)
 		2.  A backslash is represented with "\\", double backslash, or "<Bslash>".
 		3.  A real '<' is represented with "\<" or "<lt>".  When there is no
 			confusion possible, a '<' can be used directly.
+	- Figure out special function keys like volume, media, etc.
 - Fix: when in mode, non-mode mappings should not be enabled
 - Command handling
 - DKMap Parser

@@ -5,23 +5,23 @@ TODO
 v Add `MapGroup` to `State` (2018.09.25)
 	v FFI function to load `MapGroup` into `State` (2018.09.25)
 - Dealloc `_state`
-- Key simulation for special keys
-	- F1 etc.
-	- Modifier keys
-	- Escaping
+/ Key simulation for special keys
+	v F1 etc.
+	v Modifier keys
+	v Escaping
 		:help <>
 		1.  Any printable characters are typed directly, except backslash and '<'
 		2.  A backslash is represented with "\\", double backslash, or "<Bslash>".
 		3.  A real '<' is represented with "\<" or "<lt>".  When there is no
 			confusion possible, a '<' can be used directly.
 	- Figure out special function keys like volume, media, etc.
-- Fix: when in mode, non-mode mappings should not be enabled
-- Command handling
+v Fix: when in mode, non-mode mappings should not be enabled
+v Command handling
 - DKMap Parser
 	- Fail if no newline at the end of the file
 - Cleanup
-	- Remove result from `run_key_action_for_mode()`
-	- Remove Objective-C key press simulation
+	v Remove result from `run_key_action_for_mode()`
+	v Remove Objective-C key press simulation
 	- C header file
 	- cocoa_bridge
 		- Rename to `ffi` module
@@ -43,7 +43,7 @@ v Add `MapGroup` to `State` (2018.09.25)
 	- Timeout
 	- Log file? (Thinking always stdout)
 - LaunchAgent
-- Load mappings from file
+v Load mappings from file
 / Logging
 	/ Always output consistent timestamp
 	/ Log errors

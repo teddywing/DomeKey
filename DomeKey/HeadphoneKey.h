@@ -29,6 +29,5 @@ static const unsigned int TIMEOUT_MILLISECONDS = 1000;
 
 - (void)handleDeadKey:(HeadphoneButton)button;
 - (void)runAction;
-- (const Trigger *)maybeSwitchToMode:(const CKeyActionResult *)result;
 
 @end

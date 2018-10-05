@@ -23,4 +23,4 @@ $(RUST_LIB): $(RUST_SOURCE_FILES)
 
 .PHONY: run
 run: build
-	$(DEBUG_PRODUCT)
+	$(DEBUG_PRODUCT) --daemon

@@ -17,20 +17,21 @@ int main(int argc, const char * argv[]) {
     if (config->args.reload) {
         [Mappings dispatchReload];
 
-        return 0; // TODO: Return result of `notify_post`, and still log
+        // TODO: Return result of `notify_post`, and still log
+    } else if (config->args.daemon) {
+        @autoreleasepool {
+            [NSApplication sharedApplication];
+            AppDelegate *app = [[AppDelegate alloc] init];
+            [NSApp setDelegate:app];
+
+            // insert code here...
+            NSLog(@"Hello, World!");
+
+            [Mappings observeReloadNotification];
+
+            [NSApp run];
+        }
     }
 
-    @autoreleasepool {
-        [NSApplication sharedApplication];
-        AppDelegate *app = [[AppDelegate alloc] init];
-        [NSApp setDelegate:app];
-
-        // insert code here...
-        NSLog(@"Hello, World!");
-
-        [Mappings observeReloadNotification];
-
-        [NSApp run];
-    }
     return 0;
 }

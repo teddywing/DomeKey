@@ -15,9 +15,7 @@ int main(int argc, const char * argv[]) {
     const Config *config = c_parse_args(argv, argc);
 
     if (config->args.reload) {
-        [Mappings dispatchReload];
-
-        // TODO: Return result of `notify_post`, and still log
+        return [Mappings dispatchReload];
     } else if (config->args.daemon) {
         @autoreleasepool {
             [NSApplication sharedApplication];

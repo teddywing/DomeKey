@@ -54,12 +54,15 @@ void reload_mappings(
     }
 }
 
-+ (void)dispatchReload
++ (uint32_t)dispatchReload
 {
-    if (notify_post(NOTIFICATION_NAME_RELOAD) != 0) {
+    uint32_t status = notify_post(NOTIFICATION_NAME_RELOAD);
+    if (status != 0) {
         // Notification failed
         NSLog(@"Reload notification failed");
     }
+
+    return status;
 }
 
 @end

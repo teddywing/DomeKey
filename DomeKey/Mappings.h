@@ -18,6 +18,6 @@
 @interface Mappings : NSObject
 
 + (void)observeReloadNotification;
-+ (void)dispatchReload;
++ (uint32_t)dispatchReload;
 
 @end

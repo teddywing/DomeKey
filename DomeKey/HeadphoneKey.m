@@ -30,6 +30,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+    state_free(_state);
+}
+
 - (void)ddhidAppleMikey:(DDHidAppleMikey *)mikey
                   press:(unsigned)usageId
                upOrDown:(BOOL)upOrDown

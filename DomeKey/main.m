@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "AppDelegate.h"
 #import "Mappings.h"
+#import "dome_key_map.h"
 
 int main(int argc, const char * argv[]) {
-    if (argc == 2 && strcmp(argv[1], "--reload-mappings") == 0) {
+    const Config *config = c_parse_args(argv, argc);
+
+    if (config->args.reload) {
         [Mappings dispatchReload];
 
         return 0; // TODO: Return result of `notify_post`, and still log

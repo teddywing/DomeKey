@@ -4,7 +4,7 @@ TODO
 2018.09.24:
 v Add `MapGroup` to `State` (2018.09.25)
 	v FFI function to load `MapGroup` into `State` (2018.09.25)
-- Dealloc `_state`
+v Dealloc `_state`
 / Key simulation for special keys
 	v F1 etc.
 	v Modifier keys

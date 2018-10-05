@@ -12,7 +12,7 @@
 #import "dome_key_map.h"
 
 int main(int argc, const char * argv[]) {
-    const Config *config = c_parse_args(argv, argc);
+    Config *config = c_parse_args(argv, argc);
 
     if (config->args.reload) {
         return [Mappings dispatchReload];
@@ -30,6 +30,8 @@ int main(int argc, const char * argv[]) {
             [NSApp run];
         }
     }
+
+    config_free(config);
 
     return 0;
 }

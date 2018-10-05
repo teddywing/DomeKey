@@ -30,12 +30,12 @@ v Command handling
 - Documentation
 	- README
 	- Code docs
-- Command-line argument handling
+/ Command-line argument handling
 	- Custom config file
 	- DKMap file
 	- Register license
-	- Daemon
-	- Reload DKMap file (XPC services, communicate with running daemon to reload
+	v Daemon
+	v Reload DKMap file (XPC services, communicate with running daemon to reload
 	  its mappings)
 	- Write LaunchAgent plist file
 - Config file

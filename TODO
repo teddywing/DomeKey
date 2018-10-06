@@ -51,7 +51,12 @@ v Load mappings from file
 	- Check error messages of parser
 - Other headphones
 	- Test with single-button headphones (<prev>/<next>)
-	- Test with Bluetooth headphones
+	v Test with Bluetooth headphones (--doesn't work)
+	- Make it work with Bluetooth headphones
+		See:
+			. https://stackoverflow.com/questions/32499676/capture-osx-media-control-buttons-in-swift
+			. https://github.com/nevyn/SPMediaKeyTap
+			. https://weblog.rogueamoeba.com/2007/09/29/
 - Licensing
 	- Add Aquatic Prime or some such
 	- 30-day trial

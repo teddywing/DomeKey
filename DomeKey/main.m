@@ -19,7 +19,7 @@ int main(int argc, const char * argv[]) {
         return [Mappings dispatchReload];
     } else if (config->args.daemon) {
         @autoreleasepool {
-            [DKApplication sharedApplication];
+            [NSApplication sharedApplication];
             AppDelegate *app = [[AppDelegate alloc] init];
             [NSApp setDelegate:app];
 

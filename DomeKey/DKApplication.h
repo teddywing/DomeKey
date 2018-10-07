@@ -10,4 +10,6 @@
 
 @interface DKApplication : NSApplication
 
+- (void)mediaKeyEvent:(int)key state:(BOOL)state repeat:(BOOL)repeat;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DKApplication.h"
 #import "AppDelegate.h"
 #import "Mappings.h"
 #import "dome_key_map.h"
@@ -18,7 +19,7 @@ int main(int argc, const char * argv[]) {
         return [Mappings dispatchReload];
     } else if (config->args.daemon) {
         @autoreleasepool {
-            [NSApplication sharedApplication];
+            [DKApplication sharedApplication];
             AppDelegate *app = [[AppDelegate alloc] init];
             [NSApp setDelegate:app];
 

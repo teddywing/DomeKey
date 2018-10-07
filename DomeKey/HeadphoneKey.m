@@ -57,6 +57,45 @@
     }
 }
 
+- (void)startMonitoringBluetoothEvents
+{
+    // https://github.com/jguice/mac-bt-headset-fix/blob/master/Spotify%20Bluetooth%20Headset%20Listener/KDMAppDelegate.m
+    [NSEvent
+        addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask | NSSystemDefinedMask)
+        handler:^(NSEvent *theEvent) {
+            int key_code = (([theEvent data1] & 0xFFFF0000) >> 16);
+            int key_flags = ([theEvent data1] & 0x0000FFFF);
+            int key_state = (((key_flags & 0xFF00) >> 8)) == 0xA;
+
+            // TODO: Fix magic numbers
+            if (key_code == 10 && key_flags == 6972) {
+                switch ([theEvent data2]) {
+                case 786608:
+                case 786637:
+                    NSLog(@"Play");
+
+                    break;
+                case 786611:
+                    NSLog(@"Next");
+
+                    break;
+                case 786612:
+                    NSLog(@"Previous");
+
+                    break;
+                case 786613:
+                    NSLog(@"Fast-forward");
+
+                    break;
+                case 786614:
+                    NSLog(@"Rewind");
+
+                    break;
+                }
+            }
+        }];
+}
+
 - (void)handleDeadKey:(HeadphoneButton)button
 {
     NSNumber *storable_button = [NSNumber numberWithUnsignedInteger:button];

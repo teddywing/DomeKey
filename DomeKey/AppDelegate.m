@@ -13,6 +13,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     _headphone_key = [[HeadphoneKey alloc] init];
+    [_headphone_key startMonitoringBluetoothEvents];
 }
 
 @end

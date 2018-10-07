@@ -14,6 +14,7 @@
 {
     _headphone_key = [[HeadphoneKey alloc] init];
     [_headphone_key startMonitoringBluetoothEvents];
+    [_headphone_key mpmediaplayerBS];
 }
 
 @end

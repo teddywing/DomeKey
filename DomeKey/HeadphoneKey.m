@@ -96,6 +96,25 @@
         }];
 }
 
+- (void)mpmediaplayerBS
+{
+    MPRemoteCommandCenter *center = [MPRemoteCommandCenter sharedCommandCenter];
+
+    [[center togglePlayPauseCommand] addTarget:self action:@selector(mpmediaplayerplaypauesss:)];
+// pauseCommand
+// playCommand
+// togglePlayPauseCommand
+// nextTrackCommand
+// previousTrackCommand
+}
+
+- (MPRemoteCommandHandlerStatus) mpmediaplayerplaypauesss: (MPRemoteCommandEvent*) event
+{
+    NSLog(@"Played from MPMediaPlayer");
+
+    return MPRemoteCommandHandlerStatusSuccess;
+}
+
 - (void)handleDeadKey:(HeadphoneButton)button
 {
     NSNumber *storable_button = [NSNumber numberWithUnsignedInteger:button];

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import <DDHidLib/DDHidAppleMikey.h>
 
 #import "dome_key_map.h"
@@ -30,5 +31,6 @@ static const unsigned int TIMEOUT_MILLISECONDS = 1000;
 - (void)handleDeadKey:(HeadphoneButton)button;
 - (void)runAction;
 - (void)startMonitoringBluetoothEvents;
+- (void)mpmediaplayerBS;
 
 @end

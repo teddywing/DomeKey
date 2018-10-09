@@ -11,6 +11,9 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     HeadphoneKey *_headphone_key;
+    MPRemoteCommandCenter *_blargh;
 }
+
+- (void)mpmediaplayerBS;
 
 @end

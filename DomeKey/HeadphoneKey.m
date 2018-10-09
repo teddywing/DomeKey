@@ -67,6 +67,8 @@
             int key_flags = ([theEvent data1] & 0x0000FFFF);
             int key_state = (((key_flags & 0xFF00) >> 8)) == 0xA;
 
+            NSLog(@"Key from global monitor pressed");
+
             // TODO: Fix magic numbers
             if (key_code == 10 && key_flags == 6972) {
                 switch ([theEvent data2]) {
@@ -94,25 +96,6 @@
                 }
             }
         }];
-}
-
-- (void)mpmediaplayerBS
-{
-    MPRemoteCommandCenter *center = [MPRemoteCommandCenter sharedCommandCenter];
-
-    [[center togglePlayPauseCommand] addTarget:self action:@selector(mpmediaplayerplaypauesss:)];
-// pauseCommand
-// playCommand
-// togglePlayPauseCommand
-// nextTrackCommand
-// previousTrackCommand
-}
-
-- (MPRemoteCommandHandlerStatus) mpmediaplayerplaypauesss: (MPRemoteCommandEvent*) event
-{
-    NSLog(@"Played from MPMediaPlayer");
-
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
 - (void)handleDeadKey:(HeadphoneButton)button

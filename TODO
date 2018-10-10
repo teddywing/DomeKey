@@ -15,6 +15,7 @@ v Dealloc `_state`
 		3.  A real '<' is represented with "\<" or "<lt>".  When there is no
 			confusion possible, a '<' can be used directly.
 	- Figure out special function keys like volume, media, etc.
+	- <nop>
 v Fix: when in mode, non-mode mappings should not be enabled
 v Command handling
 - DKMap Parser

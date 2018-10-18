@@ -26,31 +26,6 @@ int main(int argc, const char * argv[]) {
             // insert code here...
             NSLog(@"Hello, World!");
 
-            NSEvent *event1 = [NSEvent otherEventWithType:NSSystemDefined
-                               location:NSZeroPoint
-                          modifierFlags:0xa00
-                              timestamp:0.0
-                           windowNumber:0
-                                context:nil
-                                subtype:NSScreenChangedEventType
-                                  data1:(NX_KEYTYPE_PLAY << 16) | (0xa << 8)
-                                  data2:-1];
-            CGEventRef cg_event1 = [event1 CGEvent];
-            CGEventPost(kCGHIDEventTap, cg_event1);
-            CFRelease(cg_event1);
-            NSEvent *event2 = [NSEvent otherEventWithType:NSSystemDefined
-                               location:NSZeroPoint
-                          modifierFlags:0xb00
-                              timestamp:0.0
-                           windowNumber:0
-                                context:nil
-                                subtype:NSScreenChangedEventType
-                                  data1:(NX_KEYTYPE_PLAY << 16) | (0xb << 8)
-                                  data2:-1];
-            CGEventRef cg_event2 = [event2 CGEvent];
-            CGEventPost(kCGHIDEventTap, cg_event2);
-            CFRelease(cg_event2);
-
             [Mappings observeReloadNotification];
 
             [NSApp run];

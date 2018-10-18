@@ -14,8 +14,8 @@ v Dealloc `_state`
 		2.  A backslash is represented with "\\", double backslash, or "<Bslash>".
 		3.  A real '<' is represented with "\<" or "<lt>".  When there is no
 			confusion possible, a '<' can be used directly.
-	- Figure out special function keys like volume, media, etc.
-	- <nop>
+	v Figure out special function keys like volume, media, etc.
+	v <nop>
 v Fix: when in mode, non-mode mappings should not be enabled
 v Command handling
 - DKMap Parser
@@ -51,7 +51,8 @@ v Load mappings from file
 	/ Remove `unwrap`s
 	- Check error messages of parser
 - Other headphones
-	- Test with single-button headphones (<prev>/<next>)
+	v Test with single-button headphones (<prev>/<next>)
+		> Only triggers a middle button, no prev or next
 	v Test with Bluetooth headphones (--doesn't work)
 	- Make it work with Bluetooth headphones
 		See:

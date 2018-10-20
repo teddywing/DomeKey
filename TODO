@@ -32,17 +32,17 @@ v Command handling
 	- README
 	- Code docs
 / Command-line argument handling
-	- Custom config file
+	x Custom config file
 	- DKMap file
 	- Register license
 	v Daemon
 	v Reload DKMap file (XPC services, communicate with running daemon to reload
 	  its mappings)
 	- Write LaunchAgent plist file
-- Config file
-	- Read from a config file (XDG etc.)
-	- Timeout
-	- Log file? (Thinking always stdout)
+v Config file
+	v Read from a config file (XDG etc.)
+	v Timeout
+	x Log file? (Thinking always stdout)
 - LaunchAgent
 v Load mappings from file
 / Logging

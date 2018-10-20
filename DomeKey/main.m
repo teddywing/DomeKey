@@ -13,7 +13,14 @@
 #import "dome_key_map.h"
 
 int main(int argc, const char * argv[]) {
-    Config *config = c_parse_args(argv, argc);
+    Config *config = config_read_from_file();
+
+    if (!config) {
+        NSLog(@"Unable to get config");
+        return 1;
+    }
+
+    config = c_parse_args(argv, argc, config);
 
     if (config->args.reload) {
         return [Mappings dispatchReload];

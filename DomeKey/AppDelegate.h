@@ -8,12 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import "HeadphoneKey.h"
+#import "dome_key_map.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     HeadphoneKey *_headphone_key;
     MPRemoteCommandCenter *_blargh;
+    Config *_config;
 }
 
+- (instancetype)initWithConfig:(Config *)config;
 - (void)mpmediaplayerBS;
 
 @end

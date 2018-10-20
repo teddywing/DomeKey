@@ -18,7 +18,7 @@ typedef enum KeyPress : BOOL {
     KeyPressUp = NO
 } KeyPress;
 
-static const unsigned int TIMEOUT_MILLISECONDS = 1000;
+static const Milliseconds TIMEOUT_DEFAULT = 500;
 
 @interface HeadphoneKey : NSObject {
     NSArray *_mikeys;
@@ -26,8 +26,10 @@ static const unsigned int TIMEOUT_MILLISECONDS = 1000;
 //    const Trigger *_in_mode;
     Trigger *_in_mode;
     State *_state;
+    Milliseconds _timeout;
 }
 
+- (instancetype)initWithTimeout:(Milliseconds)timeout;
 - (void)handleDeadKey:(HeadphoneButton)button;
 - (void)runAction;
 - (void)startMonitoringBluetoothEvents;

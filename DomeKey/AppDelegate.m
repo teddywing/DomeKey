@@ -10,9 +10,18 @@
 
 @implementation AppDelegate
 
+- (instancetype)initWithConfig:(Config *)config
+{
+    self = [super init];
+    if (self) {
+        _config = config;
+    }
+    return self;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    _headphone_key = [[HeadphoneKey alloc] init];
+    _headphone_key = [[HeadphoneKey alloc] initWithTimeout:_config->timeout];
     [_headphone_key startMonitoringBluetoothEvents];
 
     _blargh = [MPRemoteCommandCenter sharedCommandCenter];

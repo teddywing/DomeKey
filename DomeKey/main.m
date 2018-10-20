@@ -27,7 +27,7 @@ int main(int argc, const char * argv[]) {
     } else if (config->args.daemon) {
         @autoreleasepool {
             [NSApplication sharedApplication];
-            AppDelegate *app = [[AppDelegate alloc] init];
+            AppDelegate *app = [[AppDelegate alloc] initWithConfig:config];
             [NSApp setDelegate:app];
 
             // insert code here...

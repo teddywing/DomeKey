@@ -17,6 +17,11 @@
         _key_buffer = [[NSMutableArray alloc] initWithCapacity:5];
         _in_mode = NULL;
         _state = state_new();
+
+        // Should never be used. We initialise it just in case, but the real
+        // default should always come from a `Config`, set in the Rust library.
+        _timeout = TIMEOUT_DEFAULT;
+
         logger_init();
         state_load_map_group(_state);
 
@@ -26,6 +31,15 @@
         [_mikeys makeObjectsPerformSelector:@selector(setListenInExclusiveMode:)
             withObject:(id)kCFBooleanTrue];
         [_mikeys makeObjectsPerformSelector:@selector(startListening)];
+    }
+    return self;
+}
+
+- (instancetype)initWithTimeout:(Milliseconds)timeout
+{
+    self = [self init];
+    if (self) {
+        _timeout = timeout;
     }
     return self;
 }
@@ -107,7 +121,7 @@
         selector:@selector(runAction)
         object:nil];
 
-    NSTimeInterval timeout_seconds = TIMEOUT_MILLISECONDS / 1000.0;
+    NSTimeInterval timeout_seconds = _timeout / 1000.0;
     [self performSelector:@selector(runAction)
         withObject:nil
         afterDelay:timeout_seconds];

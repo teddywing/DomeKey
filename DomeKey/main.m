@@ -13,7 +13,7 @@
 #import "dome_key_map.h"
 
 int main(int argc, const char * argv[]) {
-    Config *config = config_read_from_file();
+    Config *config = config_get();
 
     if (!config) {
         NSLog(@"Unable to get config");

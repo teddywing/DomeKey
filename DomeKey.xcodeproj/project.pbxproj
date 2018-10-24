@@ -13,6 +13,7 @@
 		D11CD06D217FECD9001FCB97 /* AquaticPrime.c in Sources */ = {isa = PBXBuildFile; fileRef = D11CD067217FECD9001FCB97 /* AquaticPrime.c */; };
 		D131C4D321663B6500801267 /* Mappings.m in Sources */ = {isa = PBXBuildFile; fileRef = D131C4D221663B6500801267 /* Mappings.m */; };
 		D160C2A12118EF9D007D1B50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D160C2A02118EF9D007D1B50 /* main.m */; };
+		D18255B12180018C00ABC1E0 /* LicenseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D18255B02180018C00ABC1E0 /* LicenseHandler.m */; };
 		D1E101FE2133FA0300B2CA29 /* KeyboardSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E101FD2133FA0300B2CA29 /* KeyboardSimulator.m */; };
 		D1E1020821345E2300B2CA29 /* char_to_key_code.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E1020721345E2200B2CA29 /* char_to_key_code.m */; };
 		D1E1020B21350BAD00B2CA29 /* libdome_key_map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E1020A21350BAD00B2CA29 /* libdome_key_map.a */; };
@@ -81,6 +82,8 @@
 		D160C29D2118EF9D007D1B50 /* DomeKey */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DomeKey; sourceTree = BUILT_PRODUCTS_DIR; };
 		D160C2A02118EF9D007D1B50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D160C31521197983007D1B50 /* DDHidLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DDHidLib.xcodeproj; path = lib/DDHidLib/DDHidLib.xcodeproj; sourceTree = "<group>"; };
+		D18255AF2180018C00ABC1E0 /* LicenseHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseHandler.h; sourceTree = "<group>"; };
+		D18255B02180018C00ABC1E0 /* LicenseHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LicenseHandler.m; sourceTree = "<group>"; };
 		D1E101FC2133FA0300B2CA29 /* KeyboardSimulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardSimulator.h; sourceTree = "<group>"; };
 		D1E101FD2133FA0300B2CA29 /* KeyboardSimulator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardSimulator.m; sourceTree = "<group>"; };
 		D1E1020721345E2200B2CA29 /* char_to_key_code.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = char_to_key_code.m; path = lib/char_to_key_code.m; sourceTree = SOURCE_ROOT; };
@@ -136,6 +139,8 @@
 				D160C2A02118EF9D007D1B50 /* main.m */,
 				D11184602125206E00961687 /* AppDelegate.h */,
 				D11184612125206E00961687 /* AppDelegate.m */,
+				D18255AF2180018C00ABC1E0 /* LicenseHandler.h */,
+				D18255B02180018C00ABC1E0 /* LicenseHandler.m */,
 			);
 			path = DomeKey;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				D11CD06D217FECD9001FCB97 /* AquaticPrime.c in Sources */,
 				D1E1020821345E2300B2CA29 /* char_to_key_code.m in Sources */,
 				D11184622125206E00961687 /* AppDelegate.m in Sources */,
+				D18255B12180018C00ABC1E0 /* LicenseHandler.m in Sources */,
 				D1E101FE2133FA0300B2CA29 /* KeyboardSimulator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

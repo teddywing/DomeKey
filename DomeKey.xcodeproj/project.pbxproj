@@ -17,6 +17,7 @@
 		D1E101FE2133FA0300B2CA29 /* KeyboardSimulator.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E101FD2133FA0300B2CA29 /* KeyboardSimulator.m */; };
 		D1E1020821345E2300B2CA29 /* char_to_key_code.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E1020721345E2200B2CA29 /* char_to_key_code.m */; };
 		D1E1020B21350BAD00B2CA29 /* libdome_key_map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E1020A21350BAD00B2CA29 /* libdome_key_map.a */; };
+		D1EAA7A421803BB300A0AC35 /* XDG.m in Sources */ = {isa = PBXBuildFile; fileRef = D1EAA7A321803BB300A0AC35 /* XDG.m */; };
 		D1FEFD0E21691E5A0054EFE6 /* DKApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FEFD0D21691E5A0054EFE6 /* DKApplication.m */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,8 @@
 		D1E102092134611800B2CA29 /* char_to_key_code.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = char_to_key_code.h; path = lib/char_to_key_code.h; sourceTree = SOURCE_ROOT; };
 		D1E1020A21350BAD00B2CA29 /* libdome_key_map.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdome_key_map.a; path = "lib/dome-key-map/target/debug/libdome_key_map.a"; sourceTree = "<group>"; };
 		D1E1020C21350D4100B2CA29 /* dome_key_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dome_key_map.h; path = "lib/dome-key-map/dome_key_map.h"; sourceTree = SOURCE_ROOT; };
+		D1EAA7A221803BB300A0AC35 /* XDG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDG.h; sourceTree = "<group>"; };
+		D1EAA7A321803BB300A0AC35 /* XDG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDG.m; sourceTree = "<group>"; };
 		D1FEFD0C21691E5A0054EFE6 /* DKApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKApplication.h; sourceTree = "<group>"; };
 		D1FEFD0D21691E5A0054EFE6 /* DKApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKApplication.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +144,8 @@
 				D11184612125206E00961687 /* AppDelegate.m */,
 				D18255AF2180018C00ABC1E0 /* LicenseHandler.h */,
 				D18255B02180018C00ABC1E0 /* LicenseHandler.m */,
+				D1EAA7A221803BB300A0AC35 /* XDG.h */,
+				D1EAA7A321803BB300A0AC35 /* XDG.m */,
 			);
 			path = DomeKey;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D131C4D321663B6500801267 /* Mappings.m in Sources */,
+				D1EAA7A421803BB300A0AC35 /* XDG.m in Sources */,
 				D1FEFD0E21691E5A0054EFE6 /* DKApplication.m in Sources */,
 				D110C9482122E2D80094F963 /* HeadphoneKey.m in Sources */,
 				D160C2A12118EF9D007D1B50 /* main.m in Sources */,

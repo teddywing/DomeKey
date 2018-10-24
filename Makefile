@@ -21,6 +21,10 @@ $(DEBUG_PRODUCT): $(SOURCE_FILES) $(RUST_LIB)
 $(RUST_LIB): $(RUST_SOURCE_FILES)
 	$(MAKE) -C $(RUST_DIR) $(RUST_LOCAL_LIB)
 
+.PHONY: clean
+clean:
+	xcodebuild -scheme DomeKey -configuration Debug clean
+
 .PHONY: run
 run: build
 	$(DEBUG_PRODUCT) --daemon

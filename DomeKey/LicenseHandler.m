@@ -10,4 +10,18 @@
 
 @implementation LicenseHandler
 
++ (void)check
+{
+    if (/* license file exists */) {
+        // validate license
+    }
+    else {
+        // run do_trial();
+    }
+}
+
++ (void)addLicense
+{
+}
+
 @end

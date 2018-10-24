@@ -10,4 +10,7 @@
 
 @interface LicenseHandler : NSObject
 
++ (void)check;
++ (void)addLicense;
+
 @end

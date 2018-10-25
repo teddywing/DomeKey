@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#import "AquaticPrime.h"
+#import "XDG.h"
+#import "errors.h"
+
 @interface LicenseHandler : NSObject
 
 + (void)check;

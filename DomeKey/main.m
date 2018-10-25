@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DKApplication.h"
 #import "AppDelegate.h"
+#import "LicenseHandler.h"
 #import "Mappings.h"
 #import "dome_key_map.h"
 
@@ -21,6 +22,8 @@ int main(int argc, const char * argv[]) {
     }
 
     config = c_parse_args(argv, argc, config);
+
+    [LicenseHandler check];
 
     if (config->args.reload) {
         return [Mappings dispatchReload];

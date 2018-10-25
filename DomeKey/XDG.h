@@ -10,4 +10,7 @@
 
 @interface XDG : NSObject
 
++ (NSURL *)dataPath;
++ (NSURL *)domeKeyDataPath;
+
 @end

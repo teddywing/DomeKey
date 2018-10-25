@@ -16,11 +16,7 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
 {
     if ([self licenseFileExists]) {
         if (![self validateLicense]) {
-            eprintf(
-                "The license file '%s' is invalid. "
-                "Try adding your license again using the `--license` flag.\n",
-                [[[self licensePath] path] UTF8String]
-            );
+            [self printInvalidLicenseMessage];
 
             // TODO: then do trial
         }
@@ -53,6 +49,8 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
         printf("Thank you for registering DomeKey!\n");
     }
     else {
+        [self printInvalidLicenseMessage];
+
         [[NSWorkspace sharedWorkspace]
             recycleURLs:[NSArray arrayWithObject:[self licensePath]]
             completionHandler:^(NSDictionary<NSURL *,NSURL *> *newURLs, NSError *error) {
@@ -127,6 +125,15 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
     CFRelease(cf_path);
 
     return validated;
+}
+
++ (void)printInvalidLicenseMessage
+{
+    eprintf(
+        "The license file '%s' is invalid. "
+        "Try adding your license again using the `--license` flag.\n",
+        [[[self licensePath] path] UTF8String]
+    );
 }
 
 @end

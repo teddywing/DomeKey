@@ -88,9 +88,12 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
     CFStringAppend(key, CFSTR("9AEF648830DA73C584DE402"));
     CFStringAppend(key, CFSTR("4AFD071F4F4E90021B"));
 
-    // TODO: returns false on failure
-    APSetKey(key);
-    BOOL validated = APVerifyLicenseFile(cf_path);
+    BOOL is_key_loaded = APSetKey(key);
+    BOOL validated = NO;
+
+    if (is_key_loaded) {
+        validated = APVerifyLicenseFile(cf_path);
+    }
 
     CFRelease(cf_path);
 

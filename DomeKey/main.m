@@ -23,7 +23,8 @@ int main(int argc, const char * argv[]) {
 
     config = c_parse_args(argv, argc, config);
 
-    [LicenseHandler check];
+    [LicenseHandler addLicense:@"dome-key-license.plist"];
+    // [LicenseHandler check];
 
     if (config->args.reload) {
         return [Mappings dispatchReload];

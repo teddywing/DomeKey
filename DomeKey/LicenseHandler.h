@@ -15,6 +15,6 @@
 @interface LicenseHandler : NSObject
 
 + (void)check;
-+ (void)addLicense;
++ (void)addLicense:(NSString *)filePath;
 
 @end

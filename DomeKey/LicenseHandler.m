@@ -31,8 +31,38 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
     }
 }
 
-+ (void)addLicense
++ (void)addLicense:(NSString *)filePath
 {
+    // printf("current directory: %s\n", [[[NSFileManager defaultManager] currentDirectoryPath] UTF8String]);
+
+    NSError *error = nil;
+
+    // Copy license file to XDG_DATA_HOME
+    BOOL copied = [[NSFileManager defaultManager]
+        copyItemAtPath:[filePath stringByExpandingTildeInPath]
+        toPath:[[self licensePath] path]
+        error:&error];
+
+    if (!copied) {
+        eprintf("%s\n", [[error localizedDescription] UTF8String]);
+    }
+
+    BOOL validated = [self validateLicense];
+
+    if (validated) {
+        printf("Thank you for registering DomeKey!\n");
+    }
+    else {
+        BOOL trashed = [[NSFileManager defaultManager]
+            trashItemAtURL:[self licensePath]
+            resultingItemURL:nil
+            error:&error];
+
+        if (!trashed) {
+            eprintf("%s\n", [[error localizedDescription] UTF8String]);
+        }
+    }
+
     // Copy license file into path
     // Validate license
     // If license doesn't validate, remove copied file

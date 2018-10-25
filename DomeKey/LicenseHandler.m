@@ -53,14 +53,13 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
         printf("Thank you for registering DomeKey!\n");
     }
     else {
-        BOOL trashed = [[NSFileManager defaultManager]
-            trashItemAtURL:[self licensePath]
-            resultingItemURL:nil
-            error:&error];
-
-        if (!trashed) {
-            eprintf("%s\n", [[error localizedDescription] UTF8String]);
-        }
+        [[NSWorkspace sharedWorkspace]
+            recycleURLs:[NSArray arrayWithObject:[self licensePath]]
+            completionHandler:^(NSDictionary<NSURL *,NSURL *> *newURLs, NSError *error) {
+                if (error) {
+                    eprintf("%s\n", [[error localizedDescription] UTF8String]);
+                }
+            }];
     }
 
     // Copy license file into path

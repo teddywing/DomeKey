@@ -6,7 +6,10 @@
 //  Copyright © 2018 tw. All rights reserved.
 //
 
+#include <sysexits.h>
+
 #import <Foundation/Foundation.h>
+
 #import "DKApplication.h"
 #import "AppDelegate.h"
 #import "LicenseHandler.h"
@@ -25,8 +28,15 @@ int main(int argc, const char * argv[]) {
 
     config = c_parse_args(argv, argc, config);
 
-    [LicenseHandler addLicense:@"dome-key-license.plist"];
-    // [LicenseHandler check];
+    if (config->args.license) {
+        [LicenseHandler addLicense:[NSString
+            stringWithCString:config->args.license
+            encoding:NSUTF8StringEncoding]];
+
+        return EX_OK;
+    } else {
+        [LicenseHandler check];
+    }
 
     if (config->args.reload) {
         return [Mappings dispatchReload];

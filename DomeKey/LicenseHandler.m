@@ -51,13 +51,13 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
     else {
         [self printInvalidLicenseMessage];
 
-        [[NSWorkspace sharedWorkspace]
-            recycleURLs:[NSArray arrayWithObject:[self licensePath]]
-            completionHandler:^(NSDictionary<NSURL *,NSURL *> *newURLs, NSError *error) {
-                if (error) {
-                    eprintf("%s\n", [[error localizedDescription] UTF8String]);
-                }
-            }];
+        BOOL removed = [[NSFileManager defaultManager]
+            removeItemAtURL:[self licensePath]
+            error:&error];
+
+        if (!removed) {
+            eprintf("%s\n", [[error localizedDescription] UTF8String]);
+        }
     }
 
     // Copy license file into path

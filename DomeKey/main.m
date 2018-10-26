@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
 
     if (!config) {
         NSLog(@"Unable to get config");
-        return 1;
+        return EX_CONFIG;
     }
 
     config = c_parse_args(argv, argc, config);
@@ -59,5 +59,5 @@ int main(int argc, const char * argv[]) {
 
     config_free(config);
 
-    return 0;
+    return EX_OK;
 }

@@ -13,6 +13,8 @@
 #import "Mappings.h"
 #import "dome_key_map.h"
 
+static const char *VERSION = "1.0";
+
 int main(int argc, const char * argv[]) {
     Config *config = config_get();
 
@@ -41,6 +43,8 @@ int main(int argc, const char * argv[]) {
 
             [NSApp run];
         }
+    } else if (config->args.version) {
+        printf("DomeKey version %s\n", VERSION);
     }
 
     config_free(config);

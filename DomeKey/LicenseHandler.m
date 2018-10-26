@@ -75,7 +75,8 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
 
         BOOL moved = [[NSFileManager defaultManager]
             moveItemAtURL:[self licensePath]
-            toURL:trash_url
+            toURL:[trash_url
+                URLByAppendingPathComponent:[self trashedLicenseFilename]]
             error:&error];
 
         if (!moved) {
@@ -87,6 +88,17 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
     // Validate license
     // If license doesn't validate, remove copied file
     // If license does validate, print a success message
+}
+
++ (NSString *)trashedLicenseFilename
+{
+    NSDate *now = [NSDate date];
+    NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+    [date_formatter setDateFormat:@"yyyy-MM-dd-HH.mm.ss"];
+    NSString *date_string = [date_formatter stringFromDate:now];
+    return [NSString
+        stringWithFormat:@"dome-key-license-%@.plist",
+        date_string];
 }
 
 + (NSURL *)licensePath

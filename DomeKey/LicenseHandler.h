@@ -11,6 +11,7 @@
 
 #import "AquaticPrime.h"
 #import "XDG.h"
+#import "dome_key_map.h"
 #import "errors.h"
 
 @interface LicenseHandler : NSObject

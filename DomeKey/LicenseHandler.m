@@ -18,12 +18,11 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
         if (![self validateLicense]) {
             [self printInvalidLicenseMessage];
 
-            // TODO: then do trial
+            do_trial();
         }
     }
     else {
-        // run do_trial();
-        printf("TODO: do trial\n");
+        do_trial();
     }
 }
 

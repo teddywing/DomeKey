@@ -51,43 +51,50 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
     else {
         [self printInvalidLicenseMessage];
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunguarded-availability"
-#ifdef AVAILABLE_MAC_OS_X_VERSION_10_8_AND_LATER
-        // NSTrashDirectory availability starts in 10.8
-        NSURL *trash_url = [[NSFileManager defaultManager]
-            URLForDirectory:NSTrashDirectory
-            inDomain:NSUserDomainMask
-            appropriateForURL:nil
-            create:NO
-            error:&error];
-
-        if (error) {
-            eprintf("%s\n", [[error localizedDescription] UTF8String]);
-        }
-#else
-        NSURL *trash_url = [NSURL
-            fileURLWithPath:[NSHomeDirectory()
-                stringByAppendingPathComponent:@".Trash"]
-            isDirectory:YES];
-#endif
-#pragma clang diagnostic pop
-
-        BOOL moved = [[NSFileManager defaultManager]
-            moveItemAtURL:[self licensePath]
-            toURL:[trash_url
-                URLByAppendingPathComponent:[self trashedLicenseFilename]]
-            error:&error];
-
-        if (!moved) {
-            eprintf("%s\n", [[error localizedDescription] UTF8String]);
-        }
+        [self trashFileAtURL:[self licensePath]];
     }
 
     // Copy license file into path
     // Validate license
     // If license doesn't validate, remove copied file
     // If license does validate, print a success message
+}
+
++ (void)trashFileAtURL:(NSURL *)theURL
+{
+    NSError *error = nil;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
+#ifdef AVAILABLE_MAC_OS_X_VERSION_10_8_AND_LATER
+    // NSTrashDirectory availability starts in 10.8
+    NSURL *trash_url = [[NSFileManager defaultManager]
+        URLForDirectory:NSTrashDirectory
+        inDomain:NSUserDomainMask
+        appropriateForURL:nil
+        create:NO
+        error:&error];
+
+    if (error) {
+        eprintf("%s\n", [[error localizedDescription] UTF8String]);
+    }
+#else
+    NSURL *trash_url = [NSURL
+        fileURLWithPath:[NSHomeDirectory()
+            stringByAppendingPathComponent:@".Trash"]
+        isDirectory:YES];
+#endif
+#pragma clang diagnostic pop
+
+    BOOL moved = [[NSFileManager defaultManager]
+        moveItemAtURL:theURL
+        toURL:[trash_url
+            URLByAppendingPathComponent:[self trashedLicenseFilename]]
+        error:&error];
+
+    if (!moved) {
+        eprintf("%s\n", [[error localizedDescription] UTF8String]);
+    }
 }
 
 + (NSString *)trashedLicenseFilename

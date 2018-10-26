@@ -51,11 +51,34 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
     else {
         [self printInvalidLicenseMessage];
 
-        BOOL removed = [[NSFileManager defaultManager]
-            removeItemAtURL:[self licensePath]
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability"
+#ifdef AVAILABLE_MAC_OS_X_VERSION_10_8_AND_LATER
+        // NSTrashDirectory availability starts in 10.8
+        NSURL *trash_url = [[NSFileManager defaultManager]
+            URLForDirectory:NSTrashDirectory
+            inDomain:NSUserDomainMask
+            appropriateForURL:nil
+            create:NO
             error:&error];
 
-        if (!removed) {
+        if (error) {
+            eprintf("%s\n", [[error localizedDescription] UTF8String]);
+        }
+#else
+        NSURL *trash_url = [NSURL
+            fileURLWithPath:[NSHomeDirectory()
+                stringByAppendingPathComponent:@".Trash"]
+            isDirectory:YES];
+#endif
+#pragma clang diagnostic pop
+
+        BOOL moved = [[NSFileManager defaultManager]
+            moveItemAtURL:[self licensePath]
+            toURL:trash_url
+            error:&error];
+
+        if (!moved) {
             eprintf("%s\n", [[error localizedDescription] UTF8String]);
         }
     }

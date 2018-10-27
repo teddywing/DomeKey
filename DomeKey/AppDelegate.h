@@ -12,11 +12,9 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     HeadphoneKey *_headphone_key;
-    MPRemoteCommandCenter *_blargh;
     Config *_config;
 }
 
 - (instancetype)initWithConfig:(Config *)config;
-- (void)mpmediaplayerBS;
 
 @end

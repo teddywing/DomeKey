@@ -23,29 +23,6 @@
 {
     _headphone_key = [[HeadphoneKey alloc] initWithTimeout:_config->timeout];
     [_headphone_key startMonitoringBluetoothEvents];
-
-    _blargh = [MPRemoteCommandCenter sharedCommandCenter];
-
-    [[_blargh togglePlayPauseCommand] addTarget:self action:@selector(mpmediaplayerplaypauesss:)];
-}
-
-- (void)mpmediaplayerBS
-{
-    MPRemoteCommandCenter *center = [MPRemoteCommandCenter sharedCommandCenter];
-
-    [[center togglePlayPauseCommand] addTarget:self action:@selector(mpmediaplayerplaypauesss:)];
-// pauseCommand
-// playCommand
-// togglePlayPauseCommand
-// nextTrackCommand
-// previousTrackCommand
-}
-
-- (MPRemoteCommandHandlerStatus) mpmediaplayerplaypauesss: (MPRemoteCommandEvent*) event
-{
-    NSLog(@"Played from MPMediaPlayer");
-
-    return MPRemoteCommandHandlerStatusSuccess;
 }
 
 @end

@@ -10,7 +10,7 @@
 
 #define NOTIFICATION_NAME_RELOAD "com.teddywing.DomeKey.reload_mappings"
 
-const CFStringRef CFNOTIFICATION_NAME_RELOAD = CFSTR(NOTIFICATION_NAME_RELOAD);
+static const CFStringRef CFNOTIFICATION_NAME_RELOAD = CFSTR(NOTIFICATION_NAME_RELOAD);
 
 @implementation Mappings
 

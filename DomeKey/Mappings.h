@@ -9,12 +9,6 @@
 #import <Foundation/Foundation.h>
 #include <notify.h>
 
-@protocol Reloadable
-
-- (void)reload;
-
-@end
-
 @interface Mappings : NSObject
 
 + (void)observeReloadNotification;

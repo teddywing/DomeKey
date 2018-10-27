@@ -14,16 +14,6 @@ static const CFStringRef CFNOTIFICATION_NAME_RELOAD = CFSTR(NOTIFICATION_NAME_RE
 
 @implementation Mappings
 
-- (void)createXPCConnection
-{
-    NSXPCInterface *interface = [NSXPCInterface
-        interfaceWithProtocol:@protocol(Reloadable)];
-    NSXPCConnection *connection = [[NSXPCConnection alloc]
-        initWithServiceName:@"com.teddywing.DomeKey"];
-    [connection setRemoteObjectInterface:interface];
-    [connection resume];
-}
-
 + (void)observeReloadNotification
 {
     CFNotificationCenterRef center = CFNotificationCenterGetDarwinNotifyCenter();

@@ -30,6 +30,5 @@ static const Milliseconds TIMEOUT_DEFAULT = 500;
 - (instancetype)initWithTimeout:(Milliseconds)timeout;
 - (void)handleDeadKey:(HeadphoneButton)button;
 - (void)runAction;
-- (void)startMonitoringBluetoothEvents;
 
 @end

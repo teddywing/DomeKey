@@ -16,6 +16,7 @@ v Key simulation for special keys
 			confusion possible, a '<' can be used directly.
 	v Figure out special function keys like volume, media, etc.
 	v <nop>
+	- Default keys
 v Fix: when in mode, non-mode mappings should not be enabled
 v Command handling
 - DKMap Parser

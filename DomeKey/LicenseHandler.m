@@ -28,8 +28,6 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
 
 + (void)addLicense:(NSString *)filePath
 {
-    // printf("current directory: %s\n", [[[NSFileManager defaultManager] currentDirectoryPath] UTF8String]);
-
     NSError *error = nil;
 
     [self trashFileAtURL:[self licensePath]];
@@ -54,11 +52,6 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
 
         [self trashFileAtURL:[self licensePath]];
     }
-
-    // Copy license file into path
-    // Validate license
-    // If license doesn't validate, remove copied file
-    // If license does validate, print a success message
 }
 
 + (void)trashFileAtURL:(NSURL *)theURL

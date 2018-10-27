@@ -56,15 +56,15 @@
     if (upOrDown == KeyPressUp) {
         switch (usageId) {
         case kHIDUsage_Csmr_PlayOrPause:
-            NSLog(@"Middle");
+            LogDebug(@"Middle");
             [self handleDeadKey:HeadphoneButton_Play];
             break;
         case kHIDUsage_Csmr_VolumeIncrement:
-            NSLog(@"Top");
+            LogDebug(@"Top");
             [self handleDeadKey:HeadphoneButton_Up];
             break;
         case kHIDUsage_Csmr_VolumeDecrement:
-            NSLog(@"Bottom");
+            LogDebug(@"Bottom");
             [self handleDeadKey:HeadphoneButton_Down];
             break;
         }
@@ -88,7 +88,7 @@
 
 - (void)runAction
 {
-    NSLog(@"%@", _key_buffer);
+    LogDebug(@"%@", _key_buffer);
 
     NSUInteger count = [_key_buffer count];
     HeadphoneButton buttons[count];

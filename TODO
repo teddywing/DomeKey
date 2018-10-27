@@ -23,14 +23,16 @@ v Command handling
 - Cleanup
 	v Remove result from `run_key_action_for_mode()`
 	v Remove Objective-C key press simulation
-	- C header file
-	- cocoa_bridge
-		- Rename to `ffi` module
-		- Get rid of unused structs
-		- Get rid of debug print statements
+	v C header file
+	v cocoa_bridge
+		v Rename to `ffi` module
+		v Get rid of unused structs
+		v Get rid of debug print statements
+	- Get rid of `unwrap`s and `expect`s
 - Documentation
 	- README
 	- Code docs
+	- man page(s)
 / Command-line argument handling
 	x Custom config file
 	x DKMap file

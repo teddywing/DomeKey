@@ -18,7 +18,6 @@
 		D1E1020821345E2300B2CA29 /* char_to_key_code.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E1020721345E2200B2CA29 /* char_to_key_code.m */; };
 		D1E1020B21350BAD00B2CA29 /* libdome_key_map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E1020A21350BAD00B2CA29 /* libdome_key_map.a */; };
 		D1EAA7A421803BB300A0AC35 /* XDG.m in Sources */ = {isa = PBXBuildFile; fileRef = D1EAA7A321803BB300A0AC35 /* XDG.m */; };
-		D1FEFD0E21691E5A0054EFE6 /* DKApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FEFD0D21691E5A0054EFE6 /* DKApplication.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,8 +92,6 @@
 		D1E1020C21350D4100B2CA29 /* dome_key_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dome_key_map.h; path = "lib/dome-key-map/dome_key_map.h"; sourceTree = SOURCE_ROOT; };
 		D1EAA7A221803BB300A0AC35 /* XDG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDG.h; sourceTree = "<group>"; };
 		D1EAA7A321803BB300A0AC35 /* XDG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XDG.m; sourceTree = "<group>"; };
-		D1FEFD0C21691E5A0054EFE6 /* DKApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKApplication.h; sourceTree = "<group>"; };
-		D1FEFD0D21691E5A0054EFE6 /* DKApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKApplication.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +132,6 @@
 				D131C4D121663B6500801267 /* Mappings.h */,
 				D131C4D221663B6500801267 /* Mappings.m */,
 				D110C9472122E2D80094F963 /* HeadphoneKey.m */,
-				D1FEFD0C21691E5A0054EFE6 /* DKApplication.h */,
-				D1FEFD0D21691E5A0054EFE6 /* DKApplication.m */,
 				D1E101FC2133FA0300B2CA29 /* KeyboardSimulator.h */,
 				D1E101FD2133FA0300B2CA29 /* KeyboardSimulator.m */,
 				D160C2A02118EF9D007D1B50 /* main.m */,
@@ -280,7 +275,6 @@
 			files = (
 				D131C4D321663B6500801267 /* Mappings.m in Sources */,
 				D1EAA7A421803BB300A0AC35 /* XDG.m in Sources */,
-				D1FEFD0E21691E5A0054EFE6 /* DKApplication.m in Sources */,
 				D110C9482122E2D80094F963 /* HeadphoneKey.m in Sources */,
 				D160C2A12118EF9D007D1B50 /* main.m in Sources */,
 				D11CD06D217FECD9001FCB97 /* AquaticPrime.c in Sources */,

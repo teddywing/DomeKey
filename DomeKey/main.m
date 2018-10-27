@@ -10,7 +10,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DKApplication.h"
 #import "AppDelegate.h"
 #import "LicenseHandler.h"
 #import "Mappings.h"

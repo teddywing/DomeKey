@@ -5,7 +5,7 @@ TODO
 v Add `MapGroup` to `State` (2018.09.25)
 	v FFI function to load `MapGroup` into `State` (2018.09.25)
 v Dealloc `_state`
-/ Key simulation for special keys
+v Key simulation for special keys
 	v F1 etc.
 	v Modifier keys
 	v Escaping
@@ -33,8 +33,8 @@ v Command handling
 	- Code docs
 / Command-line argument handling
 	x Custom config file
-	- DKMap file
-	- Register license
+	x DKMap file
+	v Register license
 	v Daemon
 	v Reload DKMap file (XPC services, communicate with running daemon to reload
 	  its mappings)
@@ -59,9 +59,10 @@ v Load mappings from file
 			. https://stackoverflow.com/questions/32499676/capture-osx-media-control-buttons-in-swift
 			. https://github.com/nevyn/SPMediaKeyTap
 			. https://weblog.rogueamoeba.com/2007/09/29/
-- Licensing
-	- Add Aquatic Prime or some such
-	- 30-day trial
+/ Licensing
+	v Add Aquatic Prime or some such
+	v 30-day trial
+	- Check that you can still register after trial expires
 - Audio
 	- Mode activated
 	- Mode deactivated

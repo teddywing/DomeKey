@@ -32,6 +32,8 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
 
     NSError *error = nil;
 
+    [self trashFileAtURL:[self licensePath]];
+
     // Copy license file to XDG_DATA_HOME
     BOOL copied = [[NSFileManager defaultManager]
         copyItemAtPath:[filePath stringByExpandingTildeInPath]
@@ -91,7 +93,13 @@ static NSString * const LICENSE_FILE_NAME = @"license.plist";
             URLByAppendingPathComponent:[self trashedLicenseFilename]]
         error:&error];
 
-    if (!moved) {
+    if (
+        !moved &&
+        !(
+            [error code] == NSFileNoSuchFileError &&
+            [error domain] == NSCocoaErrorDomain
+        )
+    ) {
         eprintf("%s\n", [[error localizedDescription] UTF8String]);
     }
 }

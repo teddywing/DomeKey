@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <DDHidLib/DDHidAppleMikey.h>
 
+#import "Sounds.h"
 #import "dome_key_map.h"
 #import "log.h"
 
@@ -26,6 +27,7 @@ static const Milliseconds TIMEOUT_DEFAULT = 500;
     Trigger *_in_mode;
     State *_state;
     Milliseconds _timeout;
+    Sounds *_sounds;
 }
 
 - (instancetype)initWithTimeout:(Milliseconds)timeout;

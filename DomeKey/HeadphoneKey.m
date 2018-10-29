@@ -22,6 +22,9 @@
         // default should always come from a `Config`, set in the Rust library.
         _timeout = TIMEOUT_DEFAULT;
 
+        _sounds = [[Sounds alloc] init];
+        [_sounds playModeActivated];
+
         // TODO: Think about moving this logger higher up
         dome_key_logger_init();
         dome_key_state_load_map_group(_state);

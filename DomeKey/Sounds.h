@@ -6,8 +6,14 @@
 //  Copyright © 2018 tw. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <AppKit/Appkit.h>
 
-@interface Sounds : NSObject
+@interface Sounds : NSObject {
+    NSSound *_mode_activated;
+    NSSound *_mode_deactivated;
+}
+
+- (void)playModeActivated;
+- (void)playModeDeactivated;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "HeadphoneKey.h"
 
+static const Sounds *sounds_inst;
+
 @implementation HeadphoneKey
 
 - (instancetype)init
@@ -22,8 +24,7 @@
         // default should always come from a `Config`, set in the Rust library.
         _timeout = TIMEOUT_DEFAULT;
 
-        _sounds = [[Sounds alloc] init];
-        [_sounds playModeActivated];
+        sounds_inst = [[Sounds alloc] init];
 
         // TODO: Think about moving this logger higher up
         dome_key_logger_init();
@@ -106,9 +107,22 @@
         .length = count
     };
 
-    dome_key_run_key_action(_state, trigger, PlayAudio_No);
+    dome_key_run_key_action(_state, trigger, on_mode_change);
 
     [_key_buffer removeAllObjects];
+}
+
+void on_mode_change(ModeChange mode_change) {
+    switch (mode_change) {
+    case ModeChange_Activated:
+        [sounds_inst playModeActivated];
+
+        break;
+    case ModeChange_Deactivated:
+        [sounds_inst playModeDeactivated];
+
+        break;
+    }
 }
 
 @end

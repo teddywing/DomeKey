@@ -27,7 +27,6 @@ static const Milliseconds TIMEOUT_DEFAULT = 500;
     Trigger *_in_mode;
     State *_state;
     Milliseconds _timeout;
-    Sounds *_sounds;
 }
 
 - (instancetype)initWithTimeout:(Milliseconds)timeout;

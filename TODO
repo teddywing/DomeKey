@@ -66,9 +66,10 @@ v Load mappings from file
 	v Add Aquatic Prime or some such
 	v 30-day trial
 	- Check that you can still register after trial expires
-- Audio
-	- Mode activated
-	- Mode deactivated
+/ Audio
+	v Mode activated
+	v Mode deactivated
+	/ Play audio on mode change
 - DKMap editor plugins
 	- Vim
 	- Emacs

@@ -17,7 +17,6 @@ static const Sounds *sounds_inst;
     self = [super init];
     if (self) {
         _key_buffer = [[NSMutableArray alloc] initWithCapacity:5];
-        _in_mode = NULL;
         _state = dome_key_state_new();
 
         // Should never be used. We initialise it just in case, but the real

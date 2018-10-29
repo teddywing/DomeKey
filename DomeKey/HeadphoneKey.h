@@ -23,8 +23,6 @@ static const Milliseconds TIMEOUT_DEFAULT = 500;
 @interface HeadphoneKey : NSObject {
     NSArray *_mikeys;
     NSMutableArray *_key_buffer;
-//    const Trigger *_in_mode;
-    Trigger *_in_mode;
     State *_state;
     Milliseconds _timeout;
 }

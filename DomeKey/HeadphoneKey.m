@@ -16,14 +16,15 @@
     if (self) {
         _key_buffer = [[NSMutableArray alloc] initWithCapacity:5];
         _in_mode = NULL;
-        _state = state_new();
+        _state = dome_key_state_new();
 
         // Should never be used. We initialise it just in case, but the real
         // default should always come from a `Config`, set in the Rust library.
         _timeout = TIMEOUT_DEFAULT;
 
-        logger_init();
-        state_load_map_group(_state);
+        // TODO: Think about moving this logger higher up
+        dome_key_logger_init();
+        dome_key_state_load_map_group(_state);
 
         _mikeys = [DDHidAppleMikey allMikeys];
         [_mikeys makeObjectsPerformSelector:@selector(setDelegate:)
@@ -46,7 +47,7 @@
 
 - (void)dealloc
 {
-    state_free(_state);
+    dome_key_state_free(_state);
 }
 
 - (void)ddhidAppleMikey:(DDHidAppleMikey *)mikey
@@ -102,7 +103,7 @@
         .length = count
     };
 
-    c_run_key_action(_state, trigger, _in_mode);
+    dome_key_run_key_action(_state, trigger, PlayAudio_No);
 
     [_key_buffer removeAllObjects];
 }

@@ -18,14 +18,14 @@
 static const char *VERSION = "1.0";
 
 int main(int argc, const char * argv[]) {
-    Config *config = config_get();
+    Config *config = dome_key_config_get();
 
     if (!config) {
         NSLog(@"Unable to get config");
         return EX_CONFIG;
     }
 
-    config = c_parse_args(argv, argc, config);
+    config = dome_key_parse_args(argv, argc, config);
 
     if (config->args.license) {
         [LicenseHandler addLicense:[NSString
@@ -56,7 +56,7 @@ int main(int argc, const char * argv[]) {
         printf("DomeKey version %s\n", VERSION);
     }
 
-    config_free(config);
+    dome_key_config_free(config);
 
     return EX_OK;
 }

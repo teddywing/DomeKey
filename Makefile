@@ -28,3 +28,12 @@ clean:
 .PHONY: run
 run: build
 	$(DEBUG_PRODUCT) --daemon
+
+DomeKey/sounds.h: sounds/*.mp3
+	: > $@
+	echo '#ifndef SOUNDS_H' >> $@
+	echo '#define SOUNDS_H' >> $@
+	echo >> $@
+	$(foreach f,$^,xxd -include  $(f) >> $@;)
+	echo >> $@
+	echo '#endif /* SOUNDS_H */' >> $@

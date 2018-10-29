@@ -27,7 +27,7 @@ static const Milliseconds TIMEOUT_DEFAULT = 500;
     Milliseconds _timeout;
 }
 
-- (instancetype)initWithTimeout:(Milliseconds)timeout;
+- (instancetype)initWithConfig:(Config *)config;
 - (void)handleDeadKey:(HeadphoneButton)button;
 - (void)runAction;
 

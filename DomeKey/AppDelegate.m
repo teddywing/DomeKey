@@ -21,7 +21,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    _headphone_key = [[HeadphoneKey alloc] initWithTimeout:_config->timeout];
+    _headphone_key = [[HeadphoneKey alloc] initWithConfig:_config];
 }
 
 @end

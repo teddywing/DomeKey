@@ -29,11 +29,11 @@ clean:
 run: build
 	$(DEBUG_PRODUCT) --daemon
 
-DomeKey/sounds.h: sounds/*.mp3
+DomeKey/sound_data.h: sounds/*.mp3
 	: > $@
-	echo '#ifndef SOUNDS_H' >> $@
-	echo '#define SOUNDS_H' >> $@
+	echo '#ifndef SOUND_DATA_H' >> $@
+	echo '#define SOUND_DATA_H' >> $@
 	echo >> $@
 	$(foreach f,$^,xxd -include  $(f) >> $@;)
 	echo >> $@
-	echo '#endif /* SOUNDS_H */' >> $@
+	echo '#endif /* SOUND_DATA_H */' >> $@

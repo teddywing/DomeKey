@@ -1,5 +1,5 @@
-#ifndef SOUNDS_H
-#define SOUNDS_H
+#ifndef SOUND_DATA_H
+#define SOUND_DATA_H
 
 unsigned char sounds_mode_activated_mp3[] = {
   0xff, 0xfb, 0x90, 0x64, 0x00, 0x0f, 0xf0, 0x00, 0x00, 0x69, 0x00, 0x00,
@@ -5442,4 +5442,4 @@ unsigned char sounds_mode_deactivated_mp3[] = {
 };
 unsigned int sounds_mode_deactivated_mp3_len = 32600;
 
-#endif /* SOUNDS_H */
+#endif /* SOUND_DATA_H */

@@ -29,7 +29,7 @@ v Command handling
 		v Rename to `ffi` module
 		v Get rid of unused structs
 		v Get rid of debug print statements
-	- Get rid of `unwrap`s and `expect`s
+	v Get rid of `unwrap`s and `expect`s
 - Documentation
 	- README
 	- Code docs
@@ -54,7 +54,7 @@ v Load mappings from file
 / Logging
 	/ Always output consistent timestamp
 	/ Log errors
-	/ Remove `unwrap`s
+	v Remove `unwrap`s
 	- Check error messages of parser
 - Other headphones
 	v Test with single-button headphones (<prev>/<next>)

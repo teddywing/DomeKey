@@ -5,6 +5,9 @@ class DomeKey < Formula
   url ""
   sha256 "${SHA256}"
 
+  # Rust code requires at least 10.7
+  depends_on :macos => :lion
+
   def install
     bin.install "dome-key"
     man1.install "dome-key.1"

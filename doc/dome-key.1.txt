@@ -1,0 +1,42 @@
+dome-key(1)
+===========
+
+NAME
+----
+dome-key - Custom mappings for headphone buttons
+
+SYNOPSIS
+--------
+*dome-key* ['OPTIONS']
+
+DESCRIPTION
+-----------
+
+
+OPTIONS
+-------
+--audio::
+	play interface audio
+-d, --daemon::
+	run the daemon in the current shell
+-h, --help::
+	print this help menu
+--license 'file'::
+	register the software using a license plist file
+-r, --reload-mappings::
+	reload the mappings file
+-v, --version::
+	print the program version
+
+CONFIGURATION
+-------------
+
+MAPPINGS
+--------
+
+LAUNCHD
+-------
+
+COPYRIGHT
+---------
+[TODO: mention AquaticPrime as per license]

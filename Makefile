@@ -37,3 +37,9 @@ DomeKey/sound_data.h: sounds/*.mp3
 	$(foreach f,$^,xxd -include  $(f) >> $@;)
 	echo >> $@
 	echo '#endif /* SOUND_DATA_H */' >> $@
+
+doc/dome-key.1: doc/dome-key.1.txt
+	a2x --no-xmllint --format manpage $<
+
+.PHONY: doc
+doc: doc/dome-key.1

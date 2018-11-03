@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <DDHidLib/DDHidAppleMikey.h>
 
+#import "Mappings.h"
 #import "Sounds.h"
 #import "dome_key_map.h"
 #import "log.h"
@@ -23,7 +24,7 @@ static const Milliseconds TIMEOUT_DEFAULT = 500;
 @interface HeadphoneKey : NSObject {
     NSArray *_mikeys;
     NSMutableArray *_key_buffer;
-    State *_state;
+    Mappings *_mappings;
     Milliseconds _timeout;
 }
 

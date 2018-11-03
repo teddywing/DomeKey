@@ -12,9 +12,21 @@
 
 static const CFStringRef CFNOTIFICATION_NAME_RELOAD = CFSTR(NOTIFICATION_NAME_RELOAD);
 
+static State *_state;
+
 @implementation Mappings
 
-+ (void)observeReloadNotification
+- (void)dealloc
+{
+    dome_key_state_free(_state);
+}
+
+- (State *)state
+{
+    return _state;
+}
+
+- (void)observeReloadNotification
 {
     CFNotificationCenterRef center = CFNotificationCenterGetDarwinNotifyCenter();
 
@@ -39,15 +51,29 @@ void reload_mappings(
 ) {
     if (CFStringCompare(name, CFNOTIFICATION_NAME_RELOAD, 0) ==
             kCFCompareEqualTo) {
-        // Reload mappings
-        NSLog(@"TODO: reload mappings");
+        // TODO: Mappings reloaded message
+
+        [Mappings reloadMappings];
     }
+}
+
+- (void)reloadMappings
+{
+    [Mappings reloadMappings];
+}
+
++ (void)reloadMappings
+{
+    dome_key_state_free(_state);
+    _state = dome_key_state_new();
+    dome_key_state_load_map_group(_state);
 }
 
 + (uint32_t)dispatchReload
 {
     uint32_t status = notify_post(NOTIFICATION_NAME_RELOAD);
     if (status != 0) {
+        // TODO: print to stderr
         // Notification failed
         NSLog(@"Reload notification failed");
     }

@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 #include <notify.h>
 
+#import "dome_key_map.h"
+
 @interface Mappings : NSObject
 
-+ (void)observeReloadNotification;
+- (State *)state;
+
+- (void)observeReloadNotification;
+
+- (void)reloadMappings;
++ (void)reloadMappings;
 + (uint32_t)dispatchReload;
 
 @end

@@ -50,8 +50,6 @@ int main(int argc, const char * argv[]) {
             // insert code here...
             NSLog(@"Hello, World!");
 
-            [Mappings observeReloadNotification];
-
             [NSApp run];
         }
     } else if (config->args.version) {

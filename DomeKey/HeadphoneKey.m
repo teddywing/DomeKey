@@ -18,15 +18,16 @@ static BOOL _play_audio;
     self = [super init];
     if (self) {
         _key_buffer = [[NSMutableArray alloc] initWithCapacity:5];
-        _state = dome_key_state_new();
+
+        _mappings = [[Mappings alloc] init];
+        [_mappings reloadMappings];
+        [_mappings observeReloadNotification];
 
         // Should never be used. We initialise it just in case, but the real
         // default should always come from a `Config`, set in the Rust library.
         _timeout = TIMEOUT_DEFAULT;
 
         _play_audio = NO;
-
-        dome_key_state_load_map_group(_state);
 
         _mikeys = [DDHidAppleMikey allMikeys];
         [_mikeys makeObjectsPerformSelector:@selector(setDelegate:)
@@ -50,11 +51,6 @@ static BOOL _play_audio;
         }
     }
     return self;
-}
-
-- (void)dealloc
-{
-    dome_key_state_free(_state);
 }
 
 - (void)ddhidAppleMikey:(DDHidAppleMikey *)mikey
@@ -110,7 +106,7 @@ static BOOL _play_audio;
         .length = count
     };
 
-    dome_key_run_key_action(_state, trigger, on_mode_change);
+    dome_key_run_key_action([_mappings state], trigger, on_mode_change);
 
     [_key_buffer removeAllObjects];
 }

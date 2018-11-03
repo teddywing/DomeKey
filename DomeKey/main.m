@@ -27,6 +27,8 @@ int main(int argc, const char * argv[]) {
 
     config = dome_key_parse_args(argv, argc, config);
 
+    dome_key_logger_init();
+
     if (config->args.license) {
         [LicenseHandler addLicense:[NSString
             stringWithCString:config->args.license

@@ -7,11 +7,17 @@ dome-key - Custom mappings for headphone buttons
 
 SYNOPSIS
 --------
-*dome-key* ['OPTIONS']
+*dome-key* ['options']
 
 DESCRIPTION
 -----------
+Enables customisation of headphone buttons. The *dome-key* program runs
+in the background listening to button events, executing user-defined
+actions in response to these events.
 
+Headphone button mappings are defined in a file called
+'~/.config/dome-key/mappings.dkmap`. See 'MAPPINGS' or
+dome-key-mappings(7) for more information.
 
 OPTIONS
 -------
@@ -36,6 +42,10 @@ MAPPINGS
 
 LAUNCHD
 -------
+
+SEE ALSO
+--------
+dome-key-mappings(7).
 
 COPYRIGHT
 ---------

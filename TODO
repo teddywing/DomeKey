@@ -55,9 +55,10 @@ v Load mappings from file
 	/ Always output consistent timestamp
 	/ Log errors
 	v Remove `unwrap`s
-	/ Check error messages of parser
+	v Check error messages of parser
 		v Errors on lines >1
-		- Errors in actions
+		v Errors in actions
+		v Errors in the middle of definitions after the first line
 - Other headphones
 	v Test with single-button headphones (<prev>/<next>)
 		> Only triggers a middle button, no prev or next

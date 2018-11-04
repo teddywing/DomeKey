@@ -48,9 +48,6 @@ int main(int argc, const char * argv[]) {
             AppDelegate *app = [[AppDelegate alloc] initWithConfig:config];
             [NSApp setDelegate:app];
 
-            // insert code here...
-            NSLog(@"Hello, World!");
-
             [NSApp run];
         }
     } else if (config->args.version) {

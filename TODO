@@ -42,8 +42,8 @@ v Command handling
 	v Reload DKMap file (XPC services, communicate with running daemon to reload
 	  its mappings)
 		v IPC
-		- Reload mappings
-		- Show error output in client process
+		v Reload mappings
+		v Show error output in client process
 	- Write LaunchAgent plist file
 v Config file
 	v Read from a config file (XDG etc.)

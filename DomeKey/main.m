@@ -14,6 +14,7 @@
 #import "LicenseHandler.h"
 #import "Mappings.h"
 #import "dome_key_map.h"
+#import "log.h"
 
 static const char *VERSION = "1.0";
 
@@ -21,7 +22,7 @@ int main(int argc, const char * argv[]) {
     Config *config = dome_key_config_get();
 
     if (!config) {
-        NSLog(@"Unable to get config");
+        teprintf("Unable to get config");
         return EX_CONFIG;
     }
 

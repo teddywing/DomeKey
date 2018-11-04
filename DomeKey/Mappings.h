@@ -10,6 +10,7 @@
 #include <notify.h>
 
 #import "dome_key_map.h"
+#import "log.h"
 
 @interface Mappings : NSObject
 

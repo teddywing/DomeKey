@@ -73,9 +73,8 @@ void reload_mappings(
 {
     uint32_t status = notify_post(NOTIFICATION_NAME_RELOAD);
     if (status != 0) {
-        // TODO: print to stderr
         // Notification failed
-        NSLog(@"Reload notification failed");
+        teprintf("Reload notification failed");
     }
     else {
         // Run `dome_key_state_load_map_group()` to print any error messages

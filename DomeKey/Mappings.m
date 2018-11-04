@@ -51,9 +51,9 @@ void reload_mappings(
 ) {
     if (CFStringCompare(name, CFNOTIFICATION_NAME_RELOAD, 0) ==
             kCFCompareEqualTo) {
-        // TODO: Mappings reloaded message
-
         [Mappings reloadMappings];
+
+        teprintf("Mappings reloaded");
     }
 }
 

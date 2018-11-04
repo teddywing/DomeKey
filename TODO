@@ -19,9 +19,9 @@ v Key simulation for special keys
 	v Default keys
 v Fix: when in mode, non-mode mappings should not be enabled
 v Command handling
-- DKMap Parser
-	- Fail if no newline at the end of the file
-- Cleanup
+v DKMap Parser
+	v Fail if no newline at the end of the file
+v Cleanup
 	v Remove result from `run_key_action_for_mode()`
 	v Remove Objective-C key press simulation
 	v C header file
@@ -33,8 +33,8 @@ v Command handling
 - Documentation
 	- README
 	- Code docs
-	- man page(s)
-/ Command-line argument handling
+	/ man page(s)
+v Command-line argument handling
 	x Custom config file
 	x DKMap file
 	v Register license
@@ -44,16 +44,16 @@ v Command handling
 		v IPC
 		v Reload mappings
 		v Show error output in client process
-	- Write LaunchAgent plist file
+	x Write LaunchAgent plist file
 v Config file
 	v Read from a config file (XDG etc.)
 	v Timeout
 	x Log file? (Thinking always stdout)
-- LaunchAgent
+/ LaunchAgent
 v Load mappings from file
-/ Logging
-	/ Always output consistent timestamp
-	/ Log errors
+v Logging
+	S Always output consistent timestamp
+	v Log errors
 	v Remove `unwrap`s
 	v Check error messages of parser
 		v Errors on lines >1
@@ -68,7 +68,7 @@ v Load mappings from file
 			. https://stackoverflow.com/questions/32499676/capture-osx-media-control-buttons-in-swift
 			. https://github.com/nevyn/SPMediaKeyTap
 			. https://weblog.rogueamoeba.com/2007/09/29/
-/ Licensing
+v Licensing
 	v Add Aquatic Prime or some such
 	v 30-day trial
 	v Check that you can still register after trial expires
@@ -79,6 +79,6 @@ v Audio
 - DKMap editor plugins
 	- Vim
 	- Emacs
-- Homebrew formula
+/ Homebrew formula
 - Website
 - Demo video

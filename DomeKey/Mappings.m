@@ -77,6 +77,13 @@ void reload_mappings(
         // Notification failed
         NSLog(@"Reload notification failed");
     }
+    else {
+        // Run `dome_key_state_load_map_group()` to print any error messages
+        // from parsing.
+        State *tmp = dome_key_state_new();
+        dome_key_state_load_map_group(tmp);
+        dome_key_state_free(tmp);
+    }
 
     return status;
 }

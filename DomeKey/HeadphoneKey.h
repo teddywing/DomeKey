@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <DDHidLib/DDHidAppleMikey.h>
+#import "DDHidAppleMikey.h"
 
 #import "Mappings.h"
 #import "Sounds.h"

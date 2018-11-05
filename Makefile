@@ -9,25 +9,42 @@ RUST_LOCAL_LIB := target/debug/libdome_key_map.a
 RUST_LIB := $(RUST_DIR)/$(RUST_LOCAL_LIB)
 RUST_SOURCE_FILES := $(shell find $(RUST_DIR)/src -type f -name '*.rs')
 
-DEBUG_PRODUCT := ~/Library/Developer/Xcode/DerivedData/DomeKey-*/Build/Products/Debug/DomeKey
+RUST_LOCAL_LIB_RELEASE := target/release/libdome_key_map.a
+RUST_LIB_RELEASE := $(RUST_DIR)/$(RUST_LOCAL_LIB_RELEASE)
+
+DEBUG_PRODUCT := build/Build/Products/Debug/DomeKey
+RELEASE_PRODUCT := build/Build/Products/Release/DomeKey
 
 
 .PHONY: build
 build: $(DEBUG_PRODUCT)
 
 $(DEBUG_PRODUCT): $(SOURCE_FILES) $(RUST_LIB)
-	xcodebuild -scheme DomeKey -configuration Debug
+	xcodebuild -scheme DomeKey -configuration Debug -derivedDataPath build
 
 $(RUST_LIB): $(RUST_SOURCE_FILES)
 	$(MAKE) -C $(RUST_DIR) $(RUST_LOCAL_LIB)
 
 .PHONY: clean
 clean:
-	xcodebuild -scheme DomeKey -configuration Debug clean
+	xcodebuild -scheme DomeKey -configuration Debug -derivedDataPath build clean
 
 .PHONY: run
 run: build
 	$(DEBUG_PRODUCT) --daemon
+
+.PHONY: build-release
+build-release: $(RELEASE_PRODUCT)
+
+$(RELEASE_PRODUCT): $(SOURCE_FILES) $(RUST_LIB_RELEASE)
+	xcodebuild -scheme DomeKey -configuration Release -derivedDataPath build
+
+$(RUST_LIB_RELEASE): $(RUST_SOURCE_FILES)
+	$(MAKE) -C $(RUST_DIR) $(RUST_LOCAL_LIB_RELEASE)
+
+.PHONY: clean-release
+clean-release:
+	xcodebuild -scheme DomeKey -configuration Release -derivedDataPath build  clean
 
 DomeKey/sound_data.h: sounds/*.mp3
 	: > $@

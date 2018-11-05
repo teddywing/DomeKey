@@ -60,3 +60,12 @@ doc/dome-key.1: doc/dome-key.1.txt
 
 .PHONY: doc
 doc: doc/dome-key.1
+
+.PHONY: dist-all
+dist-all: dist/dome-key
+
+dist:
+	mkdir -p dist
+
+dist/dome-key: $(RELEASE_PRODUCT) dist
+	cp $< $@

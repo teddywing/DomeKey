@@ -21,6 +21,7 @@ v Fix: when in mode, non-mode mappings should not be enabled
 v Command handling
 v DKMap Parser
 	v Fail if no newline at the end of the file
+	v Fix error with comments and whitespace
 v Cleanup
 	v Remove result from `run_key_action_for_mode()`
 	v Remove Objective-C key press simulation

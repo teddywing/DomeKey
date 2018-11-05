@@ -16,6 +16,8 @@ DEBUG_PRODUCT := build/Build/Products/Debug/DomeKey
 RELEASE_PRODUCT := build/Build/Products/Release/DomeKey
 
 
+# Build debug
+
 .PHONY: build
 build: $(DEBUG_PRODUCT)
 
@@ -25,13 +27,8 @@ $(DEBUG_PRODUCT): $(SOURCE_FILES) $(RUST_LIB)
 $(RUST_LIB): $(RUST_SOURCE_FILES)
 	$(MAKE) -C $(RUST_DIR) $(RUST_LOCAL_LIB)
 
-.PHONY: clean
-clean:
-	xcodebuild -scheme DomeKey -configuration Debug -derivedDataPath build clean
 
-.PHONY: run
-run: build
-	$(DEBUG_PRODUCT) --daemon
+# Build release
 
 .PHONY: build-release
 build-release: $(RELEASE_PRODUCT)
@@ -42,9 +39,8 @@ $(RELEASE_PRODUCT): $(SOURCE_FILES) $(RUST_LIB_RELEASE)
 $(RUST_LIB_RELEASE): $(RUST_SOURCE_FILES)
 	$(MAKE) -C $(RUST_DIR) $(RUST_LOCAL_LIB_RELEASE)
 
-.PHONY: clean-release
-clean-release:
-	xcodebuild -scheme DomeKey -configuration Release -derivedDataPath build  clean
+
+# Sounds
 
 DomeKey/sound_data.h: sounds/*.mp3
 	: > $@
@@ -55,11 +51,35 @@ DomeKey/sound_data.h: sounds/*.mp3
 	echo >> $@
 	echo '#endif /* SOUND_DATA_H */' >> $@
 
-doc/dome-key.1: doc/dome-key.1.txt
-	a2x --no-xmllint --format manpage $<
+
+# Clean
+
+.PHONY: clean
+clean:
+	xcodebuild -scheme DomeKey -configuration Debug -derivedDataPath build clean
+
+.PHONY: clean-release
+clean-release:
+	xcodebuild -scheme DomeKey -configuration Release -derivedDataPath build  clean
+
+
+# Run
+
+.PHONY: run
+run: build
+	$(DEBUG_PRODUCT) --daemon
+
+
+# Documentation
 
 .PHONY: doc
 doc: doc/dome-key.1
+
+doc/dome-key.1: doc/dome-key.1.txt
+	a2x --no-xmllint --format manpage $<
+
+
+# Distribution
 
 .PHONY: dist-all
 dist-all: dist/dome-key

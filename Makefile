@@ -14,6 +14,7 @@ RUST_LIB_RELEASE := $(RUST_DIR)/$(RUST_LOCAL_LIB_RELEASE)
 
 DEBUG_PRODUCT := build/Build/Products/Debug/DomeKey
 RELEASE_PRODUCT := build/Build/Products/Release/DomeKey
+ARCHIVE_PRODUCT := build/Release.xcarchive/Products/usr/local/bin/DomeKey
 
 
 # Build debug
@@ -43,7 +44,9 @@ $(RUST_LIB_RELEASE): $(RUST_SOURCE_FILES)
 # Archive
 
 .PHONY: archive
-archive: clean-release
+archive: $(ARCHIVE_PRODUCT)
+
+$(ARCHIVE_PRODUCT): clean-release
 	xcodebuild -project DomeKey.xcodeproj \
 		-scheme DomeKey \
 		-configuration Release \
@@ -98,5 +101,5 @@ dist-all: dist/dome-key
 dist:
 	mkdir -p dist
 
-dist/dome-key: $(RELEASE_PRODUCT) dist
+dist/dome-key: $(ARCHIVE_PRODUCT) dist
 	cp $< $@

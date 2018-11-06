@@ -40,6 +40,17 @@ $(RUST_LIB_RELEASE): $(RUST_SOURCE_FILES)
 	$(MAKE) -C $(RUST_DIR) $(RUST_LOCAL_LIB_RELEASE)
 
 
+# Archive
+
+.PHONY: archive
+archive: clean-release
+	xcodebuild -project DomeKey.xcodeproj \
+		-scheme DomeKey \
+		-configuration Release \
+		archive \
+		-archivePath build/Release.xcarchive
+
+
 # Sounds
 
 DomeKey/sound_data.h: sounds/*.mp3

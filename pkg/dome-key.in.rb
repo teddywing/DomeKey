@@ -33,6 +33,8 @@ class DomeKey < Formula
   EOS
   end
 
+  plist_options :manual => "dome-key --daemon --audio"
+
   def plist; <<~EOS
 ${PLIST}
   EOS

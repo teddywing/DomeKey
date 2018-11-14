@@ -47,6 +47,22 @@ OPTIONS
 
 CONFIGURATION
 -------------
+An optional configuration file can be added at
+'~/.config/dome-key/config.toml'.
+
+Presently, only one configuration option is available. Here’s an example
+config:
+
+	timeout = 400
+
+timeout::
+	Sets the speed of multi-button mappings. To run an action mapped to
+	'<Play><Down>', you first press the ‘play’ button, then the ‘down’
+	button on your headphones. The time allowed between each button press
+	is defined by this option. By default, it’s set to 500 milliseconds.
+	It can be changed to any positive integer amount of milliseconds.
+	Setting it to '0' will prevent multi-button mappings and cause button
+	actions to be executed immediately.
 
 MAPPINGS
 --------

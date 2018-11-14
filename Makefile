@@ -91,9 +91,12 @@ run: build
 .PHONY: doc
 doc: doc/dome-key.1
 
+.PHONY: clean-doc
+doc-clean: doc/dome-key.1.intermediate.txt
+	rm $<
+
 doc/dome-key.1: doc/dome-key.1.intermediate.txt
 	a2x --no-xmllint --format manpage $<
-	rm $<
 
 doc/dome-key.1.intermediate.txt: doc/dome-key.1.txt $(LAUNCHD_PLIST)
 	sed 's/^/	/' $(LAUNCHD_PLIST) | \

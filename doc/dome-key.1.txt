@@ -22,17 +22,28 @@ dome-key-mappings(7) for more information.
 OPTIONS
 -------
 --audio::
-	play interface audio
+	Play interface audio. Sounds will play to provide feedback when a mode
+	is activated or deactivated.
+
 -d, --daemon::
-	run the daemon in the current shell
+	Run the daemon in the current shell to listen for headphone button
+	events. The program will run in the foreground.
+
 -h, --help::
-	print this help menu
+	Print usage help.
+
 --license 'file'::
-	register the software using a license plist file
+	Register the software using the license plist file at path 'file'.
+
 -r, --reload-mappings::
-	reload the mappings file
+	Reload the mappings file. If an instance of *dome-key* is running, no
+	updates to the mappings file are taken into account automatically.
+	Executing the program with this flag will cause the running daemon to
+	reload the mappings file into its memory. This is typically easier
+	than killing and relaunching the daemon.
+
 -v, --version::
-	print the program version
+	Print the program version.
 
 CONFIGURATION
 -------------

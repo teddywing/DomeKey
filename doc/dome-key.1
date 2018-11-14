@@ -1,0 +1,194 @@
+'\" t
+.\"     Title: dome-key
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 11/14/2018
+.\"    Manual: \ \&
+.\"    Source: \ \&
+.\"  Language: English
+.\"
+.TH "DOME\-KEY" "1" "11/14/2018" "\ \&" "\ \&"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+dome-key \- Custom mappings for headphone buttons
+.SH "SYNOPSIS"
+.sp
+\fBdome\-key\fR [\fIoptions\fR]
+.SH "DESCRIPTION"
+.sp
+Enables customisation of headphone buttons\&. The \fBdome\-key\fR program runs in the background listening to button events, executing user\-defined actions in response to these events\&.
+.sp
+Headphone button mappings are defined in a file called \fI~/\&.config/dome\-key/mappings\&.dkmap\fR\&. See \fIMAPPINGS\fR or dome\-key\-mappings(7) for more information\&.
+.SH "OPTIONS"
+.PP
+\-\-audio
+.RS 4
+Play interface audio\&. Sounds will play to provide feedback when a mode is activated or deactivated\&.
+.RE
+.PP
+\-d, \-\-daemon
+.RS 4
+Run the daemon in the current shell to listen for headphone button events\&. The program will run in the foreground\&.
+.RE
+.PP
+\-h, \-\-help
+.RS 4
+Print usage help\&.
+.RE
+.PP
+\-\-license \fIfile\fR
+.RS 4
+Register the software using the license plist file at path
+\fIfile\fR\&.
+.RE
+.PP
+\-r, \-\-reload\-mappings
+.RS 4
+Reload the mappings file\&. If an instance of
+\fBdome\-key\fR
+is running, no updates to the mappings file are taken into account automatically\&. Executing the program with this flag will cause the running daemon to reload the mappings file into its memory\&. This is typically easier than killing and relaunching the daemon\&.
+.RE
+.PP
+\-v, \-\-version
+.RS 4
+Print the program version\&.
+.RE
+.SH "CONFIGURATION"
+.sp
+An optional configuration file can be added at \fI~/\&.config/dome\-key/config\&.toml\fR\&.
+.sp
+Presently, only one configuration option is available\&. Here\(cqs an example config:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+timeout = 400
+.fi
+.if n \{\
+.RE
+.\}
+.PP
+timeout
+.RS 4
+Sets the speed of multi\-button mappings\&. To run an action mapped to
+\fI<Play><Down>\fR, you first press the \(oqplay\(cq button, then the \(oqdown\(cq button on your headphones\&. The time allowed between each button press is defined by this option\&. By default, it\(cqs set to 500 milliseconds\&. It can be changed to any positive integer amount of milliseconds\&. Setting it to
+\fI0\fR
+will prevent multi\-button mappings and cause button actions to be executed immediately\&.
+.RE
+.SH "MAPPINGS"
+.sp
+Mappings are defined in \fI~/\&.config/dome\-key/mappings\&.dkmap\fR\&. See dome\-key\-mappings(7) for a complete explanation of the syntax\&.
+.sp
+If a button is not mapped, it retains its normal function\&. The following mappings apply when undefined, even without a mappings file:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+map <Up> <VolumeUp>
+map <Play> <Play>
+map <Down> <VolumeDown>
+.fi
+.if n \{\
+.RE
+.\}
+.SH "LAUNCHD"
+.sp
+It\(cqs recommended that you run the program in the background using launchd(8)\&. Here\(cqs an example plist:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+<?xml version="1\&.0" encoding="UTF\-8"?>
+<!DOCTYPE plist PUBLIC "\-//Apple Computer//DTD PLIST 1\&.0//EN"
+        "http://www\&.apple\&.com/DTDs/PropertyList\-1\&.0\&.dtd">
+<plist version="1\&.0">
+<dict>
+        <key>Label</key>
+        <string>com\&.teddywing\&.dome\-key</string>
+        <key>ProgramArguments</key>
+        <array>
+                <string>/usr/local/bin/dome\-key</string>
+                <string>\-\-daemon</string>
+                <string>\-\-audio</string>
+        </array>
+        <key>RunAtLoad</key>
+        <true/>
+        <key>KeepAlive</key>
+        <true/>
+        <key>StandardErrorPath</key>
+        <string>/tmp/dome\-key\&.log</string>
+</dict>
+</plist>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+You can also use \fBbrew services\fR to do this automatically if the program was installed with Homebrew\&.
+.SH "SEE ALSO"
+.sp
+dome\-key\-mappings(7)\&.
+.SH "COPYRIGHT"
+.sp
+Copyright \(co 2018 Teddy Wing
+.SS "Aquatic Prime"
+.sp
+Copyright \(co 2005\-2010 Lucas Newman and other contributors\&. All rights reserved\&.
+.sp
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Neither the name of the Aquatic nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission\&.
+.RE
+.sp
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED\&. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE\&.

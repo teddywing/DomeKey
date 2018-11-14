@@ -86,6 +86,14 @@ ${PLIST}
 You can also use *brew services* to do this automatically if the program
 was installed with Homebrew.
 
+FILES
+-----
+*~/.config/dome-key/config.toml*::
+	Configuration file.
+
+*~/.config/dome-key/mappings.dkmap*::
+	Button mapping definitions.
+
 SEE ALSO
 --------
 dome-key-mappings(7).

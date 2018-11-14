@@ -66,6 +66,15 @@ timeout::
 
 MAPPINGS
 --------
+Mappings are defined in '~/.config/dome-key/mappings.dkmap'. See
+dome-key-mappings(7) for a complete explanation of the syntax.
+
+If a button is not mapped, it retains its normal function. The following
+mappings apply when undefined, even without a mappings file:
+
+	map <Up> <VolumeUp>
+	map <Play> <Play>
+	map <Down> <VolumeDown>
 
 LAUNCHD
 -------

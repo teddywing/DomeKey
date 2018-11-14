@@ -16,7 +16,7 @@ in the background listening to button events, executing user-defined
 actions in response to these events.
 
 Headphone button mappings are defined in a file called
-'~/.config/dome-key/mappings.dkmap`. See 'MAPPINGS' or
+'~/.config/dome-key/mappings.dkmap'. See 'MAPPINGS' or
 dome-key-mappings(7) for more information.
 
 OPTIONS

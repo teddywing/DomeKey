@@ -78,6 +78,13 @@ mappings apply when undefined, even without a mappings file:
 
 LAUNCHD
 -------
+It’s recommended that you run the program in the background using
+launchd(8). Here’s an example plist:
+
+${PLIST}
+
+You can also use *brew services* to do this automatically if the program
+was installed with Homebrew.
 
 SEE ALSO
 --------

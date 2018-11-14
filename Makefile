@@ -16,6 +16,8 @@ DEBUG_PRODUCT := build/Build/Products/Debug/DomeKey
 RELEASE_PRODUCT := build/Build/Products/Release/DomeKey
 ARCHIVE_PRODUCT := build/Release.xcarchive/Products/usr/local/bin/DomeKey
 
+LAUNCHD_PLIST := pkg/com.teddywing.dome-key.plist
+
 
 # Build debug
 
@@ -89,8 +91,13 @@ run: build
 .PHONY: doc
 doc: doc/dome-key.1
 
-doc/dome-key.1: doc/dome-key.1.txt
+doc/dome-key.1: doc/dome-key.1.intermediate.txt
 	a2x --no-xmllint --format manpage $<
+	rm $<
+
+doc/dome-key.1.intermediate.txt: doc/dome-key.1.txt $(LAUNCHD_PLIST)
+	sed 's/^/	/' $(LAUNCHD_PLIST) | \
+		perl -0777 -pe '$$plist = <STDIN>; s/\$$\{PLIST}\n/$${plist}/' $< > $@
 
 
 # Distribution

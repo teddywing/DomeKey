@@ -1,8 +1,8 @@
 class DomeKey < Formula
-  desc ""
-  homepage ""
+  desc "Control your computer with a pair of headphones"
+  homepage "https://domekey.teddywing.com"
   version "${VERSION}"
-  url ""
+  url "https://domekey.teddywing.com/downloads/dome-key_${VERSION}.tar.bz2"
   sha256 "${SHA256}"
 
   # Rust code requires at least 10.7

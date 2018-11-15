@@ -1,0 +1,406 @@
+'\" t
+.\"     Title: dome-key-mappings
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 11/15/2018
+.\"    Manual: \ \&
+.\"    Source: \ \&
+.\"  Language: English
+.\"
+.TH "DOME\-KEY\-MAPPINGS" "7" "11/15/2018" "\ \&" "\ \&"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+dome-key-mappings \- Mapping definition syntax for dome\-key
+.SH "SYNOPSIS"
+.sp
+Describes dome\-key\(cqs mapping syntax
+.SH "DESCRIPTION"
+.sp
+The mappings file lives at \fI~/\&.config/dome\-key/mappings\&.dkmap\fR\&. All mappings should be written there\&. Three types of mappings can be defined: maps, commands, and modes\&.
+.sp
+Maps are used to simulate keyboard keys\&. Commands run shell commands\&. Modes, when activated, enable you to define multiple actions for the same headphone buttons\&.
+.SH "SYNTAX"
+.sp
+Map and command mappings are composed of three parts, each separated by whitespace (one or more spaces or tabs):
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+MAP_TYPE TRIGGER ACTION
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+MAP_TYPE is the kind of action (\fBmap\fR
+or
+\fBcmd\fR)\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+TRIGGER is one or more headphone keys (\fB<Up>\fR,
+\fB<Play>\fR,
+\fB<Down>\fR)\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+ACTION defines what to do when the headphone keys from TRIGGER are pressed\&.
+.RE
+.sp
+Mappings must be written on a single line\&. No line continuation operator is available\&.
+.sp
+Comment lines are prefixed with a \(oq#\(cq and must appear on their own line\&. They are not permitted on the same line as mapping definitions\&.
+.SS "Map"
+.sp
+ACTION corresponds to a sequence of keyboard keys that will be pressed virtually\&. For example,
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+map <Up> Hello<Enter>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+will type "Hello" with a newline at the end\&. Simulated keys are pressed in succession as quickly as possible\&. There is no way to wait or sleep between keys\&.
+.SS "Command"
+.sp
+ACTION must be a shell command\&. In:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+cmd <Down> say "Good morning"
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+the \fB/usr/bin/say\fR command will be executed, playing "Good morning" in audible speech\&.
+.sp
+This map type is useful for running arbitrary code that can\(cqt be expressed by simulating keyboard keys with a \fBmap\fR\&.
+.sp
+Commands are executed with \fB$SHELL \-c ACTION\fR\&. If \fB$SHELL\fR isn\(cqt set, \fB/bin/sh\fR is used instead\&.
+.SS "Mode"
+.sp
+You can think of modes like Vim modes\&. They enable you to map the same trigger more than once\&. Let\(cqs look at an example:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+cmd <Play> open \-a Firefox
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+mode <Up> {
+        map <Play> <Space>
+}
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Here, the \fB<Play>\fR headphone button will open Firefox\&. But when the mode is active, pressing \fB<Play>\fR instead simulates the Space key\&.
+.sp
+Modes are both activated and deactivated by pressing the TRIGGER sequence written after the \fBmode\fR keyword\&. The trigger functions as a toggle\&. In our example, pressing \fB<Up>\fR activates the mode\&. If the mode is active, pressing \fB<Up>\fR will deactivate the mode, causing top\-level mappings to become available again\&.
+.sp
+Any number of maps and commands can be defined inside a mode\&. These are enclosed by curly braces\&. Mode mappings should not use the same trigger as the mode\(cqs\&. Mappings with the same trigger are ignored:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+mode <Play> {
+        # The following mapping is ignored:
+        map <Play> Hello
+}
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Modes cannot be nested\&.
+.SS "Special Keys"
+.sp
+Special keys are enclosed in \(oq<\(cq \(oq>\(cq brackets (e\&.g\&. \fB<Play>\fR)\&. These are used in \fBmap\fR actions to simulate a key press\&.
+.PP
+Nop
+.RS 4
+Unmaps a trigger\&. Used to remove the default behaviour of a trigger button without remapping it\&.
+.RE
+.PP
+F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12
+.RS 4
+Function keys
+.RE
+.PP
+Up, Down, Left, Right
+.RS 4
+Arrow keys
+.RE
+.sp
+Home, End, PageUp, PageDown
+.PP
+Return, Enter, CR
+.RS 4
+Synonyms for the Return key
+.RE
+.PP
+Del
+.RS 4
+Forward delete
+.RE
+.PP
+BS
+.RS 4
+Backspace
+.RE
+.PP
+Esc
+.RS 4
+Escape
+.RE
+.sp
+CapsLock, NumLock
+.sp
+Tab, Space
+.PP
+VolumeUp, VolumeDown, Mute
+.RS 4
+Volume keys
+.RE
+.sp
+BrightnessUp, BrightnessDown, ContrastUp, ContrastDown
+.sp
+Help
+.sp
+Power, Eject
+.PP
+VidMirror
+.RS 4
+Mirror displays
+.RE
+.PP
+Play, Next, Previous, Fast, Rewind
+.RS 4
+Media keys
+.RE
+.PP
+IlluminationUp, IlluminationDown, IlluminationToggle
+.RS 4
+Keyboard backlight
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBEscaping\fR
+.RS 4
+.sp
+To simulate a literal \(oq<\(cq character, it must be escaped with a backslash\&. Because backslash is used as an escape prefix, literal backslashes must also be escaped with a backslash\&.
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+\(oq<\(cq becomes \(oq\e<\(cq
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+\(oq\e\(cq becomes \(oq\e\e\(cq
+.RE
+.RE
+.SS "Modifiers"
+.sp
+Modifiers can be applied to any key used in \fBmap\fR actions\&. Modifiers can also be chained\&. Modifiers must be prefixed to the key they\(cqre modifying, both of which are surrounded by \(oq<\(cq \(oq>\(cq brackets\&.
+.PP
+D\-
+.RS 4
+Apple/Command key
+.RE
+.PP
+A\-
+.RS 4
+Option key
+.RE
+.PP
+C\-
+.RS 4
+Control key
+.RE
+.PP
+S\-
+.RS 4
+Shift key
+.RE
+.sp
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBExamples\fR
+.RS 4
+.PP
+<C\-c>
+.RS 4
+Control\-c
+.RE
+.PP
+<C\-S\-c>
+.RS 4
+Control\-Shift\-c
+.RE
+.PP
+<D\-A\-C\-S\-f>
+.RS 4
+Apple\-Option\-Control\-Shift\-f
+.RE
+.PP
+<A\-VolumeDown>
+.RS 4
+Option\-VolumeDown
+.RE
+.PP
+<D\-A\-Eject>
+.RS 4
+Apple\-Option\-Eject
+.RE
+.RE
+.SH "EXAMPLES"
+.sp
+Video controls:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+map <Up> <Left>
+map <Play> <Space>
+map <Down> <Right>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Don\(cqt launch iTunes when pressing the middle button:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+map <Play> <Nop>
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Let volume buttons function normally, and activate video controls when pressing \fB<Play>\fR twice:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+mode <Play><Play> {
+        map <Up> <Left>
+        map <Play> <Space>
+        map <Down> <Right>
+}
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Open frequently used applications:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+cmd <Up>       open \-a Terminal
+cmd <Play>     open \-a Xcode
+cmd <Down>     open \-a Firefox
+cmd <Up><Play> open \-a Dictionary
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Compile code in Vim:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+map <Play> <Esc>:make<CR>
+.fi
+.if n \{\
+.RE
+.\}
+.SH "SEE ALSO"
+.sp
+dome\-key(1)\&.

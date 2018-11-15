@@ -1,0 +1,253 @@
+dome-key-mappings(7)
+====================
+
+NAME
+----
+dome-key-mappings - Mapping definition syntax for dome-key
+
+SYNOPSIS
+--------
+Describes dome-key’s mapping syntax
+
+DESCRIPTION
+-----------
+The mappings file lives at '~/.config/dome-key/mappings.dkmap'. All
+mappings should be written there. Three types of mappings can be defined:
+maps, commands, and modes.
+
+Maps are used to simulate keyboard keys. Commands run shell commands.
+Modes, when activated, enable you to define multiple actions for the same
+headphone buttons.
+
+SYNTAX
+------
+Map and command mappings are composed of three parts, each separated by
+whitespace (one or more spaces or tabs):
+
+	MAP_TYPE TRIGGER ACTION
+
+* MAP_TYPE is the kind of action (*map* or *cmd*).
+* TRIGGER is one or more headphone keys (*<Up>*, *<Play>*, *<Down>*).
+* ACTION defines what to do when the headphone keys from TRIGGER are
+  pressed.
+
+Mappings must be written on a single line. No line continuation operator
+is available.
+
+Comment lines are prefixed with a ‘#’ and must appear on their own line.
+They are not permitted on the same line as mapping definitions.
+
+Map
+~~~
+ACTION corresponds to a sequence of keyboard keys that will be pressed
+virtually. For example,
+
+	map <Up> Hello<Enter>
+
+will type "Hello" with a newline at the end. Simulated keys are pressed in
+succession as quickly as possible. There is no way to wait or sleep
+between keys.
+
+Command
+~~~~~~~
+ACTION must be a shell command. In:
+
+	cmd <Down> say "Good morning"
+
+the */usr/bin/say* command will be executed, playing "Good morning" in
+audible speech.
+
+This map type is useful for running arbitrary code that can’t be expressed
+by simulating keyboard keys with a *map*.
+
+Commands are executed with *$SHELL -c ACTION*. If *$SHELL* isn’t set,
+*/bin/sh* is used instead.
+
+Mode
+~~~~
+You can think of modes like Vim modes. They enable you to map the same
+trigger more than once. Let’s look at an example:
+
+	cmd <Play> open -a Firefox
+
+	mode <Up> {
+		map <Play> <Space>
+	}
+
+Here, the *<Play>* headphone button will open Firefox. But when the mode
+is active, pressing *<Play>* instead simulates the Space key.
+
+Modes are both activated and deactivated by pressing the TRIGGER sequence
+written after the *mode* keyword. The trigger functions as a toggle. In
+our example, pressing *<Up>* activates the mode. If the mode is active,
+pressing *<Up>* will deactivate the mode, causing top-level mappings to
+become available again.
+
+Any number of maps and commands can be defined inside a mode. These are
+enclosed by curly braces. Mode mappings should not use the same trigger
+as the mode’s. Mappings with the same trigger are ignored:
+
+	mode <Play> {
+		# The following mapping is ignored:
+		map <Play> Hello
+	}
+
+Modes cannot be nested.
+
+Special Keys
+~~~~~~~~~~~~
+Special keys are enclosed in ‘<’ ‘>’ brackets (e.g. *<Play>*). These are
+used in *map* actions to simulate a key press.
+
+Nop::
+	Unmaps a trigger. Used to remove the default behaviour of a trigger
+	button without remapping it.
+
+F1::
+F2::
+F3::
+F4::
+F5::
+F6::
+F7::
+F8::
+F9::
+F10::
+F11::
+F12::
+	Function keys
+
+Up::
+Down::
+Left::
+Right::
+	Arrow keys
+
+Home, End, PageUp, PageDown
+
+Return::
+Enter::
+CR::
+	Synonyms for the Return key
+
+Del::
+	Forward delete
+
+BS::
+	Backspace
+
+Esc::
+	Escape
+
+CapsLock, NumLock
+
+Tab, Space
+
+VolumeUp::
+VolumeDown::
+Mute::
+	Volume keys
+
+BrightnessUp, BrightnessDown, ContrastUp, ContrastDown
+
+Help
+
+Power, Eject
+
+VidMirror::
+	Mirror displays
+
+Play::
+Next::
+Previous::
+Fast::
+Rewind::
+	Media keys
+
+IlluminationUp::
+IlluminationDown::
+IlluminationToggle::
+	Keyboard backlight
+
+Escaping
+^^^^^^^^
+To simulate a literal ‘<’ character, it must be escaped with a backslash.
+Because backslash is used as an escape prefix, literal backslashes must
+also be escaped with a backslash.
+
+* ‘<’ becomes ‘\<’
+* ‘\’ becomes ‘\\’
+
+Modifiers
+~~~~~~~~~
+Modifiers can be applied to any key used in *map* actions. Modifiers can
+also be chained. Modifiers must be prefixed to the key they’re modifying,
+both of which are surrounded by ‘<’ ‘>’ brackets.
+
+D-::
+	Apple/Command key
+
+A-::
+	Option key
+
+C-::
+	Control key
+
+S-::
+	Shift key
+
+Examples
+^^^^^^^^
+
+<C-c>::
+	Control-c
+
+<C-S-c>::
+	Control-Shift-c
+
+<D-A-C-S-f>::
+	Apple-Option-Control-Shift-f
+
+<A-VolumeDown>::
+	Option-VolumeDown
+
+<D-A-Eject>::
+	Apple-Option-Eject
+
+EXAMPLES
+--------
+
+Video controls:
+
+	map <Up> <Left>
+	map <Play> <Space>
+	map <Down> <Right>
+
+Don’t launch iTunes when pressing the middle button:
+
+	map <Play> <Nop>
+
+Let volume buttons function normally, and activate video controls when
+pressing *<Play>* twice:
+
+	mode <Play><Play> {
+		map <Up> <Left>
+		map <Play> <Space>
+		map <Down> <Right>
+	}
+
+Open frequently used applications:
+
+	cmd <Up>       open -a Terminal
+	cmd <Play>     open -a Xcode
+	cmd <Down>     open -a Firefox
+	cmd <Up><Play> open -a Dictionary
+
+Compile code in Vim:
+
+	map <Play> <Esc>:make<CR>
+
+SEE ALSO
+--------
+
+dome-key(1).

@@ -89,7 +89,7 @@ run: build
 # Documentation
 
 .PHONY: doc
-doc: doc/dome-key.1
+doc: doc/dome-key.1 doc/dome-key-mappings.7
 
 .PHONY: clean-doc
 doc-clean: doc/dome-key.1.intermediate.txt
@@ -101,6 +101,9 @@ doc/dome-key.1: doc/dome-key.1.intermediate.txt
 doc/dome-key.1.intermediate.txt: doc/dome-key.1.txt $(LAUNCHD_PLIST)
 	sed 's/^/	/' $(LAUNCHD_PLIST) | \
 		perl -0777 -pe '$$plist = <STDIN>; s/\$$\{PLIST}\n/$${plist}/' $< > $@
+
+doc/dome-key-mappings.7: doc/dome-key-mappings.7.txt
+	a2x --no-xmllint --format manpage $<
 
 
 # Distribution

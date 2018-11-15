@@ -11,6 +11,7 @@ class DomeKey < Formula
   def install
     bin.install "dome-key"
     man1.install "dome-key.1"
+    man7.install "dome-key-mappings.7"
   end
 
   def plist_name

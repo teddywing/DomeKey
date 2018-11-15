@@ -3,6 +3,7 @@ SOURCE_FILES := $(shell find DomeKey lib \
 	-name '*.h' \
 	-or -name '*.m' \
 	-or -name '*.c')
+VERSION := $(shell sed -n '/VERSION/ s/^.*"\([[:digit:]\.]*\)".*$$/\1/p' DomeKey/main.m)
 
 RUST_DIR := lib/dome-key-map
 RUST_LOCAL_LIB := target/debug/libdome_key_map.a
@@ -122,3 +123,12 @@ dist/dome-key.1: doc/dome-key.1 dist
 
 dist/dome-key-mappings.7: doc/dome-key-mappings.7 dist
 	cp $< $@
+
+
+# Packaging
+
+.PHONY: tar
+tar: dome-key_$(VERSION).tar.bz2
+
+dome-key_$(VERSION).tar.bz2: dist-all
+	tar cjv -s /dist/dome-key_$(VERSION)/ -f $@ dist

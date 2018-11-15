@@ -109,10 +109,16 @@ doc/dome-key-mappings.7: doc/dome-key-mappings.7.txt
 # Distribution
 
 .PHONY: dist-all
-dist-all: dist/dome-key
+dist-all: dist/dome-key dist/dome-key.1 dist/dome-key-mappings.7
 
 dist:
 	mkdir -p dist
 
 dist/dome-key: $(ARCHIVE_PRODUCT) dist
+	cp $< $@
+
+dist/dome-key.1: doc/dome-key.1 dist
+	cp $< $@
+
+dist/dome-key-mappings.7: doc/dome-key-mappings.7 dist
 	cp $< $@

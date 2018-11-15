@@ -2,6 +2,15 @@
 
 from string import Template
 import os
+import re
+
+
+def get_version():
+    with open(os.path.join(script_dir, '../DomeKey/main.m'), 'r') as f:
+        for line in f:
+            if 'VERSION' in line:
+                version = re.search('"([\d.]+)"', line)[1]
+                return version
 
 
 script_dir = os.path.dirname(__file__)
@@ -18,7 +27,7 @@ with open(os.path.join(script_dir, 'com.teddywing.dome-key.plist'), 'r') as f:
 
 template = Template(homebrew_template)
 formula = template.substitute(
-    VERSION='test',
+    VERSION=get_version(),
     SHA256='unknown',
     PLIST=plist.rstrip(),
 )

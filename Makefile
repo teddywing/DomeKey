@@ -127,6 +127,15 @@ dist/dome-key-mappings.7: doc/dome-key-mappings.7 dist
 
 # Packaging
 
+.PHONY: pkg
+pkg: HomebrewFormula/dome-key.rb
+
+HomebrewFormula/dome-key.rb: pkg/dome-key.in.rb \
+		pkg/com.teddywing.dome-key.plist \
+		DomeKey/main.m \
+		dome-key_$(VERSION).tar.bz2
+	pkg/generate_homebrew_formula.py > $@
+
 .PHONY: tar
 tar: dome-key_$(VERSION).tar.bz2
 

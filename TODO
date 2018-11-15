@@ -31,10 +31,10 @@ v Cleanup
 		v Get rid of unused structs
 		v Get rid of debug print statements
 	v Get rid of `unwrap`s and `expect`s
-- Documentation
+/ Documentation
 	- README
 	- Code docs
-	/ man page(s)
+	v man page(s)
 v Command-line argument handling
 	x Custom config file
 	x DKMap file
@@ -77,10 +77,10 @@ v Audio
 	v Mode activated
 	v Mode deactivated
 	v Play audio on mode change
-- DKMap editor plugins
-	- Vim
+/ DKMap editor plugins
+	v Vim
 	- Emacs
 / Homebrew formula
 	v Add an example config to brew caveats
-- Website
+/ Website
 - Demo video

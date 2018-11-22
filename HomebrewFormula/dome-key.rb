@@ -3,7 +3,7 @@ class DomeKey < Formula
   homepage "https://domekey.teddywing.com"
   version "1.0"
   url "https://domekey.teddywing.com/downloads/dome-key_1.0.tar.bz2"
-  sha256 "a724bd988d1d40103057216c6f08ab0c768a172c8167aaef7a9f692a5aa784e9"
+  sha256 "999377af51f9bfd381dcc5cce1a4ece0626774a35674827ad5002e5a2c2786f4"
 
   # Rust code requires at least 10.7
   depends_on :macos => :lion

@@ -1,6 +1,6 @@
 [submodule "lib/DDHidLib"]
 	path = lib/DDHidLib
-	url = https://github.com/teddywing/DDHidLib.git
+	url = https://github.com/Daij-Djan/DDHidLib.git
 [submodule "lib/dome-key-map"]
 	path = lib/dome-key-map
 	url = ../dome-key-map

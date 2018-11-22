@@ -61,6 +61,8 @@ $(ARCHIVE_PRODUCT): clean-release
 
 DomeKey/sound_data.h: sounds/*.mp3
 	: > $@
+	sed -e 's,^\([^$$]\),// \1,' -e 's,^$$,//,' LICENSE >> $@
+	echo >> $@
 	echo '#ifndef SOUND_DATA_H' >> $@
 	echo '#define SOUND_DATA_H' >> $@
 	echo >> $@

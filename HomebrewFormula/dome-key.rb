@@ -3,7 +3,7 @@ class DomeKey < Formula
   homepage "https://domekey.teddywing.com"
   version "1.0"
   url "https://domekey.teddywing.com/downloads/dome-key_1.0.tar.bz2"
-  sha256 "999377af51f9bfd381dcc5cce1a4ece0626774a35674827ad5002e5a2c2786f4"
+  sha256 "03fd038e1ae67ce1fce949d2d5fcafb50bbee2f4344b71c16577929c557718a1"
 
   # Rust code requires at least 10.7
   depends_on :macos => :lion
@@ -21,16 +21,20 @@ class DomeKey < Formula
   def caveats; <<~EOS
     To get started with a set of mappings, try running the these commands:
 
-    mkdir -p $HOME/.config/dome-key
-    cat <<EOM > $HOME/.config/dome-key/mappings.dkmap
-    map <Play> <Nop>
+        mkdir -p $HOME/.config/dome-key
+        cat <<EOM > $HOME/.config/dome-key/mappings.dkmap
+        map <Play> <Nop>
 
-    mode <Play><Play> {
-        map <Up> <Left>
-        map <Play> <Space>
-        map <Down> <Right>
-    }
-    EOM
+        mode <Play><Play> {
+            map <Up> <Left>
+            map <Play> <Space>
+            map <Down> <Right>
+        }
+        EOM
+
+    If `dome-key` is already running, load the new mappings:
+
+        dome-key --reload-mappings
   EOS
   end
 

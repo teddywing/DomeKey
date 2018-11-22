@@ -21,16 +21,20 @@ class DomeKey < Formula
   def caveats; <<~EOS
     To get started with a set of mappings, try running the these commands:
 
-    mkdir -p $$HOME/.config/dome-key
-    cat <<EOM > $$HOME/.config/dome-key/mappings.dkmap
-    map <Play> <Nop>
+        mkdir -p $$HOME/.config/dome-key
+        cat <<EOM > $$HOME/.config/dome-key/mappings.dkmap
+        map <Play> <Nop>
 
-    mode <Play><Play> {
-        map <Up> <Left>
-        map <Play> <Space>
-        map <Down> <Right>
-    }
-    EOM
+        mode <Play><Play> {
+            map <Up> <Left>
+            map <Play> <Space>
+            map <Down> <Right>
+        }
+        EOM
+
+    If `dome-key` is already running, load the new mappings:
+
+        dome-key --reload-mappings
   EOS
   end
 

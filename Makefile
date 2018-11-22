@@ -109,6 +109,15 @@ doc/dome-key.1.intermediate.txt: doc/dome-key.1.txt $(LAUNCHD_PLIST) LICENSE
 doc/dome-key-mappings.7: doc/dome-key-mappings.7.txt
 	a2x --no-xmllint --format manpage $<
 
+.PHONY: doc-html
+doc-html: doc/dome-key.1.html doc/dome-key-mappings.7.html
+
+doc/dome-key.1.html: doc/dome-key.1.intermediate.txt
+	a2x --no-xmllint --format xhtml $<
+
+doc/dome-key-mappings.7.html: doc/dome-key-mappings.7.txt
+	a2x --no-xmllint --format xhtml $<
+
 
 # Distribution
 

@@ -3,7 +3,7 @@
 	url = https://github.com/Daij-Djan/DDHidLib.git
 [submodule "lib/dome-key-map"]
 	path = lib/dome-key-map
-	url = ../dome-key-map
+	url = https://github.com/teddywing/dome-key-map.git
 [submodule "lib/AquaticPrime"]
 	path = lib/AquaticPrime
 	url = https://github.com/bdrister/AquaticPrime.git

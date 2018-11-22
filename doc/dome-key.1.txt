@@ -100,7 +100,7 @@ dome-key-mappings(7).
 
 COPYRIGHT
 ---------
-Copyright © 2018 Teddy Wing
+${LICENSE}
 
 Aquatic Prime
 ~~~~~~~~~~~~~

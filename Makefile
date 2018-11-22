@@ -99,9 +99,12 @@ doc-clean: doc/dome-key.1.intermediate.txt
 doc/dome-key.1: doc/dome-key.1.intermediate.txt
 	a2x --no-xmllint --format manpage $<
 
-doc/dome-key.1.intermediate.txt: doc/dome-key.1.txt $(LAUNCHD_PLIST)
+doc/dome-key.1.intermediate.txt: doc/dome-key.1.txt $(LAUNCHD_PLIST) LICENSE
 	sed 's/^/	/' $(LAUNCHD_PLIST) | \
-		perl -0777 -pe '$$plist = <STDIN>; s/\$$\{PLIST}\n/$${plist}/' $< > $@
+		perl -0777 -pe '$$plist = <STDIN>; s/\$$\{PLIST}\n/$${plist}/' $< > "$@.0"
+	perl -0777 -pe '$$license = <STDIN>; s/\$$\{LICENSE}\n/$${license}/' \
+		< LICENSE "$@.0" > $@
+	rm "$@.0"
 
 doc/dome-key-mappings.7: doc/dome-key-mappings.7.txt
 	a2x --no-xmllint --format manpage $<

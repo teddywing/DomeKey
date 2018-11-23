@@ -32,7 +32,7 @@ v Cleanup
 		v Get rid of debug print statements
 	v Get rid of `unwrap`s and `expect`s
 / Documentation
-	- README
+	v README
 	- Code docs
 	v man page(s)
 v Command-line argument handling
@@ -50,7 +50,7 @@ v Config file
 	v Read from a config file (XDG etc.)
 	v Timeout
 	x Log file? (Thinking always stdout)
-/ LaunchAgent
+v LaunchAgent
 v Load mappings from file
 v Logging
 	S Always output consistent timestamp
@@ -80,7 +80,7 @@ v Audio
 / DKMap editor plugins
 	v Vim
 	- Emacs
-/ Homebrew formula
+v Homebrew formula
 	v Add an example config to brew caveats
-/ Website
-- Demo video
+v Website
+v Demo video

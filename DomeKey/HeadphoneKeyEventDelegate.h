@@ -9,5 +9,12 @@
 #ifndef HeadphoneKeyEventDelegate_h
 #define HeadphoneKeyEventDelegate_h
 
+#include "dome_key_map.h"
+
+@protocol HeadphoneKeyEventDelegate
+
+- (void)headphoneButtonWasPressed:(HeadphoneButton)button;
+
+@end
 
 #endif /* HeadphoneKeyEventDelegate_h */

@@ -7,7 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DDHidAppleMikey.h"
 
-@interface HeadphoneKeyEventWired : NSObject
+#import "HeadphoneKeyEventDelegate.h"
+#import "log.h"
+
+typedef enum KeyPress : BOOL {
+    KeyPressDown = YES,
+    KeyPressUp = NO
+} KeyPress;
+
+@interface HeadphoneKeyEventWired : NSObject {
+    NSArray *_mikeys;
+    id <HeadphoneKeyEventDelegate> _delegate;
+}
+
+- (instancetype)initWithDelegate:(id <HeadphoneKeyEventDelegate>)delegate;
 
 @end

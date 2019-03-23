@@ -58,6 +58,9 @@ static BOOL _play_audio;
 {
     self = [super init];
     if (self) {
+        _wired_headphone_event = [[HeadphoneKeyEventWired alloc]
+            initWithDelegate:self];
+
         _key_buffer = [[NSMutableArray alloc] initWithCapacity:5];
 
         _mappings = [[Mappings alloc] init];
@@ -69,13 +72,6 @@ static BOOL _play_audio;
         _timeout = TIMEOUT_DEFAULT;
 
         _play_audio = NO;
-
-        _mikeys = [DDHidAppleMikey allMikeys];
-        [_mikeys makeObjectsPerformSelector:@selector(setDelegate:)
-            withObject:self];
-        [_mikeys makeObjectsPerformSelector:@selector(setListenInExclusiveMode:)
-            withObject:(id)kCFBooleanTrue];
-        [_mikeys makeObjectsPerformSelector:@selector(startListening)];
     }
     return self;
 }
@@ -94,26 +90,9 @@ static BOOL _play_audio;
     return self;
 }
 
-- (void)ddhidAppleMikey:(DDHidAppleMikey *)mikey
-                  press:(unsigned)usageId
-               upOrDown:(BOOL)upOrDown
+- (void)headphoneButtonWasPressed:(HeadphoneButton)button
 {
-    if (upOrDown == KeyPressUp) {
-        switch (usageId) {
-        case kHIDUsage_Csmr_PlayOrPause:
-            LogDebug(@"Middle");
-            [self handleDeadKey:HeadphoneButton_Play];
-            break;
-        case kHIDUsage_Csmr_VolumeIncrement:
-            LogDebug(@"Top");
-            [self handleDeadKey:HeadphoneButton_Up];
-            break;
-        case kHIDUsage_Csmr_VolumeDecrement:
-            LogDebug(@"Bottom");
-            [self handleDeadKey:HeadphoneButton_Down];
-            break;
-        }
-    }
+    [self handleDeadKey:button];
 }
 
 - (void)handleDeadKey:(HeadphoneButton)button

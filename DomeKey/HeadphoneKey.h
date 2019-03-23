@@ -48,22 +48,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DDHidAppleMikey.h"
 
+#import "HeadphoneKeyEventDelegate.h"
+#import "HeadphoneKeyEventWired.h"
 #import "Mappings.h"
 #import "Sounds.h"
 #import "dome_key_map.h"
 #import "log.h"
 
-typedef enum KeyPress : BOOL {
-    KeyPressDown = YES,
-    KeyPressUp = NO
-} KeyPress;
-
 static const Milliseconds TIMEOUT_DEFAULT = 500;
 
-@interface HeadphoneKey : NSObject {
-    NSArray *_mikeys;
+@interface HeadphoneKey : NSObject <HeadphoneKeyEventDelegate> {
+    HeadphoneKeyEventWired *_wired_headphone_event;
     NSMutableArray *_key_buffer;
     Mappings *_mappings;
     Milliseconds _timeout;

@@ -37,6 +37,37 @@
     forDevice:(IOBluetoothDevice *)device
 {
     NSLog(@"Paired notification: %@ ; Device: %@", notification, device);
+// 200418
+    NSLog(@"Device class major: %u", [device deviceClassMajor]);
+    NSLog(@"Device class minor: %u", [device deviceClassMinor]);
+    NSLog(@"Class of device: %u", [device classOfDevice]);
+    NSLog(@"Service class major: %u", [device serviceClassMajor]);
+
+    // for (int i = 0; i < [[device services] count]; i++) {
+    //     NSLog(@"Service: %@", [[device services] objectAtIndex:i]);
+    // }
+
+    if ([device deviceClassMajor] == kBluetoothDeviceClassMajorAudio) {
+        NSLog(@"Major audio");
+    }
+    if ([device deviceClassMinor] == kBluetoothDeviceClassMinorAudioHeadphones) {
+        NSLog(@"Minor audio");
+    }
+    if ([device serviceClassMajor] == kBluetoothServiceClassMajorAudio) {
+        NSLog(@"Service major audio");
+    }
+    if ([device deviceClassMajor] == kBluetoothDeviceClassMajorAudio
+            && [device deviceClassMinor] == kBluetoothDeviceClassMinorAudioHeadphones
+            && [device serviceClassMajor] == kBluetoothServiceClassMajorAudio) {
+        NSLog(@"Is audio device");
+    }
+
+    IOBluetoothSDPServiceRecord *service_record = [device
+        getServiceRecordForUUID:[[IOBluetoothSDPUUID alloc]
+            initWithUUID16:kBluetoothSDPUUID16ServiceClassAVRemoteControlController]];
+    if (service_record) {
+        NSLog(@"Is remote controller");
+    }
 }
 
 @end

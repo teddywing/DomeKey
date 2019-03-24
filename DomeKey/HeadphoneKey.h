@@ -51,6 +51,7 @@
 
 #import "HeadphoneKeyEventDelegate.h"
 #import "HeadphoneKeyEventWired.h"
+#import "HeadphoneKeyEventBluetooth.h"
 #import "Mappings.h"
 #import "Sounds.h"
 #import "dome_key_map.h"
@@ -60,6 +61,7 @@ static const Milliseconds TIMEOUT_DEFAULT = 500;
 
 @interface HeadphoneKey : NSObject <HeadphoneKeyEventDelegate> {
     HeadphoneKeyEventWired *_wired_headphone_event;
+    HeadphoneKeyEventBluetooth *_bluetooth_headphone_event;
     NSMutableArray *_key_buffer;
     Mappings *_mappings;
     Milliseconds _timeout;

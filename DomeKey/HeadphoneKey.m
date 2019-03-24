@@ -60,6 +60,8 @@ static BOOL _play_audio;
     if (self) {
         _wired_headphone_event = [[HeadphoneKeyEventWired alloc]
             initWithDelegate:self];
+        _bluetooth_headphone_event = [[HeadphoneKeyEventBluetooth alloc]
+            initWithDelegate:self];
 
         _key_buffer = [[NSMutableArray alloc] initWithCapacity:5];
 

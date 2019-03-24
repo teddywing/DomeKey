@@ -10,4 +10,26 @@
 
 @implementation HeadphoneKeyEventBluetooth
 
+- (instancetype)initWithDelegate:(id <HeadphoneKeyEventDelegate>)delegate
+{
+    self = [self init];
+    if (self) {
+        _delegate = delegate;
+
+        MPRemoteCommandCenter *cc = [MPRemoteCommandCenter sharedCommandCenter];
+        [cc playCommand];
+        [cc pauseCommand];
+        [cc stopCommand];
+        [cc togglePlayPauseCommand];
+        // [cc nextTrackCommand];
+        // [cc seekForwardCommand];
+        // [cc previousTrackCommand];
+        // [cc seekBackwardCommand];
+    }
+    return self;
+}
+
+MPRemoteCommandHandler key_pressed(HeadphoneButton button) {
+}
+
 @end

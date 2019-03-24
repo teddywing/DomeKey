@@ -16,20 +16,27 @@
     if (self) {
         _delegate = delegate;
 
-        MPRemoteCommandCenter *cc = [MPRemoteCommandCenter sharedCommandCenter];
-        [cc playCommand];
-        [cc pauseCommand];
-        [cc stopCommand];
-        [cc togglePlayPauseCommand];
-        // [cc nextTrackCommand];
-        // [cc seekForwardCommand];
-        // [cc previousTrackCommand];
-        // [cc seekBackwardCommand];
+        IOBluetoothUserNotification *notification = [IOBluetoothDevice
+            registerForConnectNotifications:self
+            selector:@selector(connectNotification:forDevice:)];
+        if (!notification) {
+            // TODO: error
+            NSLog(@"Connection notification error");
+        }
     }
     return self;
 }
 
-MPRemoteCommandHandler key_pressed(HeadphoneButton button) {
+- (void)devicePairingFinished:(id)sender
+    error:(IOReturn)error
+{
+    NSLog(@"Paired: %@", sender);
+}
+
+- (void)connectNotification:(IOBluetoothUserNotification *)notification
+    forDevice:(IOBluetoothDevice *)device
+{
+    NSLog(@"Paired notification: %@ ; Device: %@", notification, device);
 }
 
 @end

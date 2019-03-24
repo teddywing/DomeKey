@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <IOBluetooth/IOBluetooth.h>
 
 #import "HeadphoneKeyEventDelegate.h"
 #import "dome_key_map.h"
 
-@interface HeadphoneKeyEventBluetooth : NSObject {
+@interface HeadphoneKeyEventBluetooth : NSObject <IOBluetoothDevicePairDelegate> {
     id <HeadphoneKeyEventDelegate> _delegate;
 }
 

@@ -65,9 +65,54 @@
     IOBluetoothSDPServiceRecord *service_record = [device
         getServiceRecordForUUID:[[IOBluetoothSDPUUID alloc]
             initWithUUID16:kBluetoothSDPUUID16ServiceClassAVRemoteControlController]];
-    if (service_record) {
-        NSLog(@"Is remote controller");
+    if (!service_record) {
+        NSLog(@"Not a remote control capable pair of headphones");
+        return;
     }
+
+    // BluetoothL2CAPPSM *psm = NULL;
+    IOReturn ret;
+    // ret = [service_record getL2CAPPSM:psm];
+    // if (ret != kIOReturnSuccess) {
+    //     NSLog(@"L2CAP PSM error: %d", ret);
+    //     return;
+    // }
+
+    IOBluetoothL2CAPChannel *l2cap;
+    ret = [device openL2CAPChannelAsync:&l2cap
+        // withPSM:*psm // (BluetoothL2CAPPSM)kBluetoothL2CAPPSMAVCTP
+        // Appears to only work for the Play/Pause button
+        withPSM:(BluetoothL2CAPPSM)kBluetoothL2CAPPSMAVCTP
+        delegate:self];
+    if (ret != kIOReturnSuccess) {
+        _l2cap_channel = nil;
+        NSLog(@"L2CAP channel open error: %d", ret);
+        return;
+    }
+
+    _l2cap_channel = l2cap;
+}
+
+- (void)l2capChannelData:(IOBluetoothL2CAPChannel *)l2capChannel
+    data:(void *)dataPointer
+    length:(size_t)dataLength
+{
+    // for (size_t i = 0; i < dataLength; i++) {
+    //     NSLog(@"L2CAP data: ?", dataPointer[i]);
+    // }
+    NSData *data = [NSData dataWithBytes:dataPointer length:dataLength];
+    NSLog(@"L2CAP data: %@", data);
+}
+
+- (void)l2capChannelOpenComplete:(IOBluetoothL2CAPChannel *)l2capChannel
+    status:(IOReturn)error
+{
+    NSLog(@"L2CAP channel open");
+}
+
+- (void)l2capChannelClosed:(IOBluetoothL2CAPChannel *)l2capChannel
+{
+    NSLog(@"L2CAP channel closed");
 }
 
 @end

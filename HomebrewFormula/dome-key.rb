@@ -6,7 +6,7 @@ class DomeKey < Formula
   sha256 "03fd038e1ae67ce1fce949d2d5fcafb50bbee2f4344b71c16577929c557718a1"
 
   # Rust code requires at least 10.7
-  depends_on :macos => :lion
+  depends_on :macos => "10.7"
 
   def install
     bin.install "dome-key"

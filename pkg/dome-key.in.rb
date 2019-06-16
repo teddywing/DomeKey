@@ -6,7 +6,16 @@ class DomeKey < Formula
   sha256 "${SHA256}"
 
   # Rust code requires at least 10.7
-  depends_on :macos => "10.7"
+  depends_on :macos => :lion if MacOS::Version::SYMBOLS.has_key?(:lion)
+
+  def minimum_os
+    return "" if MacOS::Version::SYMBOLS.has_key?(:lion)
+
+    <<~EOS
+      DomeKey requires Mac OS X 10.7 Lion or later.
+
+    EOS
+  end
 
   def install
     bin.install "dome-key"
@@ -19,7 +28,7 @@ class DomeKey < Formula
   end
 
   def caveats; <<~EOS
-    To get started with a set of mappings, try running the these commands:
+    #{minimum_os}To get started with a set of mappings, try running the these commands:
 
         mkdir -p $$HOME/.config/dome-key
         cat <<EOM > $$HOME/.config/dome-key/mappings.dkmap
